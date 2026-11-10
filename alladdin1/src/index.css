@@ -1,0 +1,577 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./traka.css";
+
+/* =====================================================================
+   TEMA — tokeni iz dizajn/UI.md 2–4 (jedino mesto gde se definišu vrednosti).
+   Tailwind v4 iz ovoga pravi klase (bg-bg-1, text-gold-500, rounded-card ...).
+   ===================================================================== */
+@theme {
+  --color-*: initial; /* samo naši tokeni, bez Tailwind paleta */
+  /* površine (UI 2.1) */
+  --color-bg-0: #05090F;
+  --color-bg-1: #0A111B;
+  --color-bg-2: #111A27;
+  --color-bg-3: #18243A;
+  /* zlato (UI 2.2) */
+  --color-gold-300: #EBD58E;
+  --color-gold-400: #E3C26A;
+  --color-gold-500: #D9B650;
+  --color-gold-600: #B8922F;
+  --color-gold-700: #8A6F2A;
+  --color-gold-800: #4A3C17;
+  /* tekst (UI 2.3) */
+  --color-ink: #F4EFE3;
+  --color-ink-2: #C2BAA6;
+  --color-ink-3: #9A937F;
+  --color-on-gold: #1A1405;
+  /* statusi (UI 2.4): tekst / pozadina */
+  --color-ok: #7FD1A0;
+  --color-ok-bg: #10251B;
+  --color-warn: #F0A65A;
+  --color-warn-bg: #2A1D0E;
+  --color-err: #FF8A80;
+  --color-err-bg: #3A1517;
+  --color-info: #8FB5E8;
+  --color-info-bg: #101D31;
+  --color-neu: #B8B2A3;
+  --color-neu-bg: #1A2230;
+  /* traka demoa i traka priče (UI 7.12, 7.13) */
+  --color-demo-strip: #0D0A03;
+  --color-story-bar: #070C14;
+  /* LOGO: boje iz SVG-a (BREND.md), ne #C8242B iz UI.md. Menja se ovde. */
+  --color-logo-gold: #D8A52A;
+  --color-logo-red: #9B1C15; /* slova "Add" i "1" */
+  --color-logo-red-seg: #7E1E16; /* crveni segmenti žetona */
+  --color-logo-ink: #050A14; /* telo žetona */
+
+  /* fontovi (UI 3) */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-body: 'Source Serif 4', 'Times New Roman', Georgia, serif;
+
+  /* zaobljenja (UI 4): 8 / 14 / 22 / pun krug */
+  --radius-btn: 8px;
+  --radius-card: 14px;
+  --radius-sheet: 22px;
+  --radius-pill: 999px;
+
+  /* razmaci: Tailwind-ova mreža od 4 px ostaje (p-1 = 4 px ... p-16 = 64 px) */
+  --breakpoint-md: 720px; /* telefon < 720 */
+  --breakpoint-lg: 1024px; /* računar >= 1024 */
+}
+
+/* =====================================================================
+   OSNOVA
+   ===================================================================== */
+@layer base {
+  html {
+    background: var(--color-bg-0);
+    /* postavlja okvir po visini donje trake (okvir/PrelazEkrana.tsx) */
+    scroll-padding-bottom: 0;
+  }
+  main:focus,
+  h1:focus {
+    outline: none;
+  }
+  body {
+    margin: 0;
+    background: var(--color-bg-0);
+    color: var(--color-ink);
+    font: 400 16px/24px var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    min-width: 320px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-ink);
+    letter-spacing: 0.01em;
+    font-variant-numeric: lining-nums;
+  }
+  h1 {
+    font-size: 38px;
+    line-height: 42px;
+    letter-spacing: 0.02em;
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  h3 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 60px;
+      line-height: 64px;
+    }
+    h2 {
+      font-size: 34px;
+      line-height: 40px;
+    }
+    h3 {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  /* tabularne cifre za sve iznose (UI 3) */
+  .num {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  /* fokus se nikad ne uklanja (UI 7.2) */
+  :focus-visible {
+    outline: 3px solid var(--color-gold-400);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =====================================================================
+   KOMPONENTE (UI 7) — obične klase, da JSX ostane čitljiv
+   ===================================================================== */
+@layer components {
+  /* oznaka demoa (UI 7.13): fiksna traka na vrhu */
+  .demo-strip {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    min-height: 28px;
+    padding: 6px 16px;
+    background: var(--color-demo-strip);
+    border-bottom: 1px solid var(--color-gold-700);
+    font: 600 10.5px/14px var(--font-body);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold-400);
+    text-align: center;
+  }
+  .demo-strip::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-gold-500);
+    flex: none;
+  }
+  @media (min-width: 720px) {
+    .demo-strip {
+      font-size: 12px;
+      padding-block: 5px;
+    }
+  }
+
+  /* zaglavlje (UI 7.1) */
+  .hdr {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-gold-800);
+    background: var(--color-bg-0);
+  }
+  @media (min-width: 1024px) {
+    .hdr {
+      padding-inline: 24px;
+    }
+  }
+
+  /* sadržaj */
+  .wrap {
+    width: 100%;
+    max-width: 1160px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 1024px) {
+    .wrap {
+      padding-inline: 24px;
+    }
+  }
+
+  /* dugmad (UI 7.2) */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 24px;
+    border-radius: var(--radius-btn);
+    font: 600 14px/1 var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: linear-gradient(180deg, var(--color-gold-400), var(--color-gold-600));
+    color: var(--color-on-gold);
+    border-color: var(--color-gold-300);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, var(--color-gold-300), var(--color-gold-500));
+  }
+  .btn-primary:active {
+    background: var(--color-gold-600);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-gold-500);
+    border-color: var(--color-gold-600);
+  }
+  .btn-secondary:hover {
+    background: rgb(217 182 80 / 0.1);
+    border-color: var(--color-gold-500);
+  }
+  .btn-text {
+    background: transparent;
+    color: var(--color-gold-500);
+    padding: 0 8px;
+    letter-spacing: 0.06em;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  /* telefon: izbledeli rub pokazuje da se tabovi naloga skroluju (npr. Advisor je desno) */
+  .traka-tabova {
+    mask-image: linear-gradient(to right, transparent 0, #000 16px, #000 calc(100% - 24px), transparent 100%);
+    scrollbar-width: none;
+  }
+  /* skip linkovi: nevidljivi dok nemaju fokus */
+  .skip-link {
+    position: absolute;
+    left: 8px;
+    top: -200px;
+    z-index: 200;
+    padding: 10px 16px;
+    background: var(--color-bg-1);
+    color: var(--color-gold-300);
+    border: 2px solid var(--color-gold-400);
+    border-radius: 6px;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    top: 8px;
+  }
+  .btn-danger {
+    background: transparent;
+    color: var(--color-err);
+    border-color: #b85a55;
+  }
+  .btn-sm {
+    min-height: 36px;
+    padding: 0 16px;
+    font-size: 12.5px;
+  }
+  .btn:disabled {
+    background: var(--color-bg-2);
+    color: var(--color-ink-3);
+    border-color: var(--color-gold-800);
+    cursor: not-allowed;
+  }
+
+  /* kartica (UI 7.4) */
+  .card {
+    background: var(--color-bg-1);
+    border: 1px solid var(--color-gold-700);
+    border-radius: var(--radius-card);
+    padding: 16px;
+  }
+  .card-quiet {
+    border-color: var(--color-gold-800);
+  }
+  @media (min-width: 720px) {
+    .card {
+      padding: 24px;
+    }
+  }
+  .naslov-kartice {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  @media (min-width: 1024px) {
+    .naslov-kartice {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+  .card h3,
+  .naslov-kartice {
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--color-gold-800);
+  }
+
+  /* prikazno polje (UI 7.3): izgleda kao polje, a tekst je (A3 odluka 2) */
+  .polje-oznaka {
+    font: 600 12.5px/16px var(--font-body);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-2);
+  }
+  .polje {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
+    background: var(--color-bg-2);
+    color: var(--color-ink);
+    border: 1px solid var(--color-gold-700);
+    border-radius: var(--radius-btn);
+  }
+  .polje-pomoc {
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--color-ink-3);
+  }
+
+  /* oznake stanja (UI 7.9): pilula 26 px, ikona + reč */
+  .stanje {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 26px;
+    padding: 0 12px;
+    border-radius: var(--radius-pill);
+    font: 600 12.5px/1 var(--font-body);
+    white-space: nowrap;
+  }
+  .stanje-ok {
+    color: var(--color-ok);
+    background: var(--color-ok-bg);
+  }
+  .stanje-warn {
+    color: var(--color-warn);
+    background: var(--color-warn-bg);
+  }
+  .stanje-err {
+    color: var(--color-err);
+    background: var(--color-err-bg);
+  }
+  .stanje-info {
+    color: var(--color-info);
+    background: var(--color-info-bg);
+  }
+  .stanje-neu {
+    color: var(--color-neu);
+    background: var(--color-neu-bg);
+  }
+
+  /* 18+ žeton (UI 7.10) */
+  .zeton18 {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-gold-500);
+    color: var(--color-gold-400);
+    font: 600 12px/1 var(--font-body);
+  }
+
+  /* podnožje (UI 7.10) */
+  .podnozje {
+    border-top: 1px solid var(--color-gold-800);
+    padding-block: 24px;
+  }
+  .podnozje-tekst {
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--color-ink-2);
+  }
+  .podnozje-tekst b {
+    color: var(--color-ink);
+    font-weight: 600;
+  }
+  .podnozje-linkovi a {
+    color: var(--color-gold-500);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 13px;
+  }
+
+  /* fotografija (UI 5): zatamnjenje ~62%, zasićenost ~85%, gradijent pri dnu u pozadinu — sve je CSS, ne ugrađeno u fajl */
+  .slika {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-bg-1);
+    aspect-ratio: 16 / 9;
+  }
+  .slika img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.62) saturate(0.85);
+  }
+  .slika::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 20%, rgb(5 9 15 / 0.5) 55%, var(--color-bg-0) 100%);
+    pointer-events: none;
+  }
+  .slika-neutralna {
+    aspect-ratio: 16 / 9;
+    background:
+      radial-gradient(120% 90% at 18% 8%, rgb(184 150 70 / 0.3), transparent 60%),
+      linear-gradient(135deg, var(--color-bg-2), var(--color-bg-0));
+  }
+  .slika-hero {
+    aspect-ratio: 4 / 3;
+  }
+  /* telefon: tekst preko slike traži jače zatamnjenje (kontrast, a mere se ne menjaju) */
+  @media (max-width: 719px) {
+    .slika::after {
+      background: linear-gradient(180deg, rgb(5 9 15 / 0.45) 0%, rgb(5 9 15 / 0.82) 40%, var(--color-bg-0) 100%);
+    }
+  }
+  @media (min-width: 720px) {
+    .slika-hero {
+      aspect-ratio: 21 / 9;
+    }
+  }
+  .slika-tekst {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  /* logo (inline SVG): boje kroz CSS, da se menjaju na jednom mestu (tema gore) */
+  .logo-zlato {
+    fill: var(--color-logo-gold);
+  }
+  .logo-zlato-linija {
+    stroke: var(--color-logo-gold);
+  }
+  .logo-crveno {
+    fill: var(--color-logo-red);
+  }
+  .logo-segment {
+    fill: var(--color-logo-red-seg);
+  }
+  .logo-telo {
+    fill: var(--color-logo-ink);
+  }
+  .logo-izrez {
+    stroke: var(--color-logo-ink);
+  }
+  .logo-natpis {
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+    font-variant-numeric: oldstyle-nums;
+  }
+
+  /* uzorak boje na ekranu temelja */
+  .uzorak-boje {
+    width: 100%;
+    height: 44px;
+    border-radius: var(--radius-btn);
+    border: 1px solid var(--color-gold-800);
+  }
+}
+
+/* =====================================================================
+   OKVIR I KONTROLE PRIČE (talas 1)
+   ===================================================================== */
+@layer components {
+  /* Naslov hero-a: velika slova samo za tekst koji NIJE naziv brenda (UI 3). */
+  .naslov-hero {
+    text-wrap: balance;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  /* Naslov ekrana (UI 3: h2 34/40 računar, 28/32 telefon) je semantički h1. */
+  .naslov-ekrana {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: 0.01em;
+  }
+  @media (min-width: 1024px) {
+    .naslov-ekrana {
+      font-size: 34px;
+      line-height: 40px;
+    }
+  }
+  /* traka tabova na telefonu: desni rub bledi, da se vidi da lista nastavlja (pomera se u stranu) */
+  .nav-stavka {
+    min-height: 44px;
+    padding: 0 2px;
+    font: 400 14px/20px var(--font-body);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .nav-stavka:hover {
+    color: var(--color-gold-300);
+  }
+  .nav-aktivna {
+    color: var(--color-gold-500);
+    border-bottom-color: var(--color-gold-500);
+  }
+  .nav-mala {
+    font-size: 13px;
+  }
+  .btn-link-mini {
+    color: var(--color-gold-500);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 13px;
+    min-height: 24px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .btn-link-mini:hover {
+    color: var(--color-gold-300);
+  }
+  /* Traka priče (UI 7.12): namerno tamnija od stranice, zlatna linija gore, jaka senka. */
+  .traka-price {
+    background: var(--color-story-bar);
+    border-top: 2px solid var(--color-gold-500);
+    box-shadow: 0 -8px 24px rgb(0 0 0 / 0.6);
+  }
+  .traka-0 { width: 0%; }
+  .traka-5 { width: 5%; }
+  .traka-10 { width: 10%; }
+  .traka-15 { width: 15%; }
+  .traka-20 { width: 20%; }
+  .traka-25 { width: 25%; }
+  .traka-30 { width: 30%; }
+  .traka-35 { width: 35%; }
+  .traka-40 { width: 40%; }
+  .traka-45 { width: 45%; }
+  .traka-50 { width: 50%; }
+  .traka-55 { width: 55%; }
+  .traka-60 { width: 60%; }
+  .traka-65 { width: 65%; }
+  .traka-70 { width: 70%; }
+  .traka-75 { width: 75%; }
+  .traka-80 { width: 80%; }
+  .traka-85 { width: 85%; }
+  .traka-90 { width: 90%; }
+  .traka-95 { width: 95%; }
+  .traka-100 { width: 100%; }
+}

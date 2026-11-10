@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env*
+*.local
+e2e-slike/
+_snimci/
+izvor-slika/
+*.log
+.vite/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.vitest/

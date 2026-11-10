@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TerraVista - PRIVREMENI znak za demo: simbol + naziv, za SVETLU pozadinu.
+     Naziv je nacrtan linijama (bez fontova); slova su geometrijska, nacrtana rucno. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990 200" width="990" height="200" role="img" aria-labelledby="t">
+  <title id="t">TerraVista (privremeni znak za demo)</title>
+  <!-- simbol (kvadrat 512 smanjen na 200) -->
+  <g transform="scale(0.390625)">
+    <rect width="512" height="512" rx="112" fill="#10243E"/>
+    <rect x="96" y="104" width="320" height="48" fill="#F4E9D8"/>
+    <rect x="236" y="152" width="40" height="222" fill="#F4E9D8"/>
+    <polyline points="112,200 256,376 400,200" fill="none" stroke="#2BB3A3" stroke-width="52" stroke-linejoin="miter"/>
+    <circle cx="256" cy="252" r="46" fill="#E0693C"/>
+  </g>
+  <!-- naziv: "Terra" u Noc, "Vista" u tamnu Dolinu -->
+  <g transform="translate(240,42) scale(1.15)" fill="none" stroke-width="14">
+    <g stroke="#10243E">
+      <path d="M0 7H70M35 7V100"/>
+      <path transform="translate(80)" d="M7 65H57A25 28 0 1 0 50 84"/>
+      <path transform="translate(154)" d="M7 100V30M7 62C7 44 20 37 36 37"/>
+      <path transform="translate(200)" d="M7 100V30M7 62C7 44 20 37 36 37"/>
+      <g transform="translate(246)"><ellipse cx="32" cy="65" rx="25" ry="28"/><path d="M57 30V100"/></g>
+    </g>
+    <g stroke="#0F7F73">
+      <path transform="translate(323)" d="M0 0L40 100L80 0" stroke-linejoin="miter"/>
+      <g transform="translate(416)"><path d="M7 30V100"/><circle cx="7" cy="9" r="8" fill="#0F7F73" stroke="none"/></g>
+      <path transform="translate(443)" d="M54 47C52 40 44 37 32 37C18 37 11 43 11 50C11 60 24 62 32 65C44 68 54 72 54 82C54 89 46 93 32 93C20 93 11 89 8 82"/>
+      <path transform="translate(510)" d="M22 10V82Q22 93 34 93H44M4 37H42"/>
+      <g transform="translate(564)"><ellipse cx="32" cy="65" rx="25" ry="28"/><path d="M57 30V100"/></g>
+    </g>
+  </g>
+</svg>

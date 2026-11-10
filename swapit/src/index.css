@@ -1,0 +1,1071 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./traka.css";
+@import "./ekrani.css";
+
+/* =====================================================================
+   TEMA — tokeni iz dizajn/UI.md 2–4 i dizajn/uzorak-izgleda.html (jedino mesto gde se definišu vrednosti).
+   Dve teme: svetla (podrazumevana) i tamna (`html[data-tema="tamna"]` menja vrednosti promenljivih).
+   Tailwind v4 iz ovoga pravi klase (bg-card, text-ink, border-line ...); boje se čitaju iz promenljivih, pa ih tema menja.
+   ===================================================================== */
+@theme inline {
+  --color-*: initial; /* samo naši tokeni, bez Tailwind paleta */
+  --color-page: var(--bg-page);
+  --color-card: var(--bg-card);
+  --color-soft: var(--bg-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-blue: var(--blue);
+  --color-blue-h: var(--blue-h);
+  --color-green: var(--green);
+  --color-green-h: var(--green-h);
+  --color-green-on: var(--green-on);
+  --color-green-text: var(--green-text);
+  --color-red: var(--red);
+  --color-red-on: var(--red-on);
+  --color-stub: var(--stub);
+  --color-stub-ink: var(--stub-ink);
+  --color-premium: var(--premium);
+  --font-sans: var(--font);
+  --breakpoint-md: 720px; /* telefon < 720 */
+  --breakpoint-lg: 1024px; /* računar >= 1024 */
+}
+
+:root {
+  --font: 'Nunito', 'Nunito Sans', system-ui, Arial, sans-serif;
+  /* svetla tema (UI 2.1) */
+  --bg-page: #f8f8f8;
+  --bg-card: #ffffff;
+  --bg-soft: #e8f4fc;
+  --line: #c9d6e2;
+  --line-strong: #6f8296;
+  --ink: #0f2233;
+  --ink-2: #4a5b6b;
+  --ink-3: #5e6f80;
+  --blue: #0a72b2; /* talas 4: malo tamnije od UI.md (#0b7bbf) da plav tekst prolazi 4,5:1 i na #f8f8f8 i na #e8f4fc */
+  --blue-h: #08679f;
+  --hfrom: #2494d6;
+  --hto: #0b7bbf;
+  --green: #1e8738;
+  --green-h: #176b2c;
+  --green-on: #ffffff;
+  --green-text: #1a7a33;
+  --red: #e60000;
+  --red-on: #ffffff;
+  --focus: #0b4f7c;
+  --stub: #ffffff;
+  --stub-ink: #0f2233;
+  --premium: #e8edf2;
+  --rowhead: #e8f4fc;
+  --shadow: 0 1px 3px rgba(11, 79, 124, 0.16);
+  --shadow-gore: 0 6px 18px rgba(11, 79, 124, 0.22);
+  --btnborder: transparent;
+  --disabled-bg: #e1e7ed;
+  --disabled-ink: #55677a; /* talas 4: 4,6:1 na #e1e7ed (bilo 4,15) */
+  /* ilustrativna mapa (B6.5) */
+  --mapa-kopno: #eef3f7;
+  --mapa-kopno-2: #e3ebf1;
+  --mapa-voda: #a9d6f2;
+  --mapa-granica: #9fb3c6;
+  --mapa-natpis: #1f3447;
+  --mapa-obris-broj: #d3e9f7;
+  --mapa-obris: #eef3f7;
+  --mapa-obris-voda: #a9d6f2;
+  --mapa-krug: #19b4f3;
+  --mapa-krug-ivica: #0b7bbf;
+  color-scheme: light;
+}
+
+html[data-tema='tamna'] {
+  /* tamna tema (UI 2.2) */
+  --bg-page: #000e26;
+  --bg-card: #007bb8;
+  --bg-soft: #005c8f;
+  --line: #2f6fa8;
+  --line-strong: #ffffff; /* P-S1: ivice kontrola ≥ 3:1 na kartici */
+  --ink: #ffffff;
+  --ink-2: #ffffff; /* P-S1: #bfd7f0 na #007bb8 je 3,2:1 — sporedni tekst je beo (≥ 4,5:1) */
+  --ink-3: #ffffff;
+  --green: #34c759;
+  --green-h: #6fe08a;
+  --green-on: #062b12;
+  --green-text: #34c759;
+  --red: #ff6b6b;
+  --red-on: #1a0505;
+  --focus: #ffd24a;
+  --stub: #003a6e;
+  --stub-ink: #ffffff;
+  --premium: #005c8f;
+  --rowhead: #005c8f;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-gore: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --btnborder: #ffffff;
+  --disabled-bg: #003a6e;
+  --disabled-ink: #bfd7f0;
+  --mapa-kopno: #003a6e;
+  --mapa-kopno-2: #00315e;
+  --mapa-voda: #084f88; /* talas 4: tamnija voda, natpis „Sava“ ≥ 4,5:1 i kad ga dodirne krug */
+  --mapa-granica: #5f95c8;
+  --mapa-natpis: #ffffff;
+  --mapa-obris-broj: #0d4f85;
+  --mapa-obris: #003a6e;
+  --mapa-obris-voda: #084f88;
+  --mapa-krug: #1b78b8; /* talas 4: tamnija popuna kruga, beli natpis preko nje ≥ 4,5:1 */
+  --mapa-krug-ivica: #ffffff;
+  color-scheme: dark;
+}
+
+/* =====================================================================
+   OSNOVA
+   ===================================================================== */
+@layer base {
+  html {
+    background: var(--bg-page);
+    scroll-padding-bottom: 0; /* okvir/PrelazEkrana.tsx postavlja po visini donje trake */
+  }
+  main:focus,
+  h1:focus {
+    outline: none;
+  }
+  body {
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--ink);
+    font: 400 16px/24px var(--font);
+    -webkit-font-smoothing: antialiased;
+    min-width: 320px;
+  }
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 800;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  h2 {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  h3 {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 700;
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    h2 {
+      font-size: 20px;
+      line-height: 28px;
+    }
+    h3 {
+      font-size: 16px;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  button {
+    font-family: var(--font);
+    cursor: pointer;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  /* fokus se nikad ne uklanja (UI 2.1: prsten 3 px sa razmakom 2 px) */
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* =====================================================================
+   OKVIR: oznaka demoa, zaglavlje, stub, desna traka, ikonska traka (UI 4, 5.1, 5.2, 5.14)
+   ===================================================================== */
+@layer components {
+  /* oznaka demoa (UI 5.14): uska traka 28 px na samom vrhu SVAKOG ekrana */
+  .oznaka-demoa {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    height: 28px;
+    background: #0f2233;
+    color: #ffffff;
+    font: 700 12px/28px var(--font);
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .oznaka-demoa::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #ffd24a; /* tačka je ukras */
+  }
+  @media (max-width: 719px) {
+    .oznaka-demoa {
+      font-size: 12px; /* P-N1: najmanje 12 px i na telefonu */
+      letter-spacing: 0.03em;
+    }
+  }
+
+  /* zaglavlje (UI 5.1): gradijent, 56 px, sticky ispod oznake demoa */
+  .zaglavlje {
+    position: sticky;
+    top: 28px;
+    z-index: 55;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--hfrom), var(--hto));
+  }
+  .zaglavlje .znak {
+    width: 40px;
+    height: 40px;
+    flex: none;
+  }
+  .ikona-dugme {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border: 0;
+    background: none;
+    color: inherit;
+    border-radius: 8px;
+  }
+  .ikona-dugme:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+  .zaglavlje :focus-visible,
+  .desna-traka :focus-visible {
+    outline-color: #ffffff;
+  }
+  html[data-tema='tamna'] .zaglavlje :focus-visible,
+  html[data-tema='tamna'] .desna-traka :focus-visible {
+    outline-color: #ffd24a;
+  }
+  .broj-znacka {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 10px;
+    background: #e60000;
+    color: #ffffff;
+    font: 700 12px/20px var(--font);
+    text-align: center;
+  }
+  .toast-zatvori {
+    display: grid;
+    place-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -8px -8px -8px 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    flex: none;
+  }
+  .poeni-pilula {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(0, 35, 70, 0.42); /* talas 4: tamna providna podloga, beli tekst ≥ 4,5:1 preko zaglavlja */
+    color: #ffffff;
+    font: 700 13px/20px var(--font);
+    white-space: nowrap;
+    position: relative;
+  }
+  /* P-S7: „model u proveri“ uz pilulu poena se vidi i pri fokusu tastaturom, ne samo pri prelasku mišem */
+  .poeni-pilula::after {
+    content: 'model u proveri';
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: #0b2a44;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    font: 700 12px/16px var(--font);
+    z-index: 60;
+  }
+  .poeni-pilula:hover::after,
+  .poeni-pilula:focus-visible::after {
+    display: block;
+  }
+  .polje-pretrage {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 8px 0 16px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #4a5b6b;
+  }
+  .polje-pretrage input {
+    flex: 1;
+    min-width: 0;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    color: #0f2233;
+    font: 400 15px/20px var(--font);
+  }
+  .polje-pretrage input::placeholder {
+    color: #4a5b6b;
+  }
+  .polje-pretrage input:focus-visible {
+    outline: none;
+  }
+  .polje-pretrage:focus-within {
+    outline: 3px solid #0b4f7c;
+    outline-offset: 2px;
+  }
+  /* P-S1: u tamnoj temi prsten fokusa pretrage je žut kao kod ostalih elemenata zaglavlja */
+  html[data-tema='tamna'] .polje-pretrage:focus-within {
+    outline-color: var(--focus);
+  }
+  .polje-pretrage a {
+    color: #0b7bbf;
+    font: 700 13px/20px var(--font);
+    white-space: nowrap;
+  }
+  .padajuce {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 70;
+    min-width: 220px;
+    margin-top: 4px;
+    padding: 8px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+    color: var(--ink);
+    box-shadow: var(--shadow-gore);
+  }
+  .padajuce a,
+  .padajuce button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: inherit;
+    font: 600 14px/20px var(--font);
+    text-align: left;
+    text-decoration: none;
+  }
+  .padajuce a:hover,
+  .padajuce button:hover {
+    background: var(--bg-soft);
+  }
+  .padajuce .naslov-grupe {
+    padding: 8px 12px 0;
+    font: 700 12px/16px var(--font);
+    color: var(--ink-2);
+  }
+
+  /* mreža računara (UI 4): margine 16 · stub 224 · razmak 16 · glavna kolona · desna traka 48 + razmaci */
+  .okvir-telo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    align-items: start;
+    max-width: 1440px;
+    margin-inline: auto;
+    width: 100%;
+  }
+  .okvir-telo.sa-stubom {
+    grid-template-columns: 224px minmax(0, 1fr);
+    padding-right: 72px;
+  }
+  @media (max-width: 1023px) {
+    .okvir-telo.sa-stubom {
+      grid-template-columns: minmax(0, 1fr);
+      padding-right: 16px;
+    }
+  }
+  @media (max-width: 719px) {
+    .okvir-telo {
+      padding: 12px;
+    }
+  }
+
+  /* levi stub kategorija (UI 5.2) */
+  .stub {
+    position: sticky;
+    top: 92px; /* oznaka 28 + zaglavlje 56 + razmak 8 */
+    max-height: calc(100vh - 108px - var(--donji-visina, 0px));
+    overflow: auto;
+    padding: 16px 8px;
+    border-radius: 14px;
+    background: var(--stub);
+    color: var(--stub-ink);
+    box-shadow: var(--shadow);
+  }
+  html[data-tema='tamna'] .stub {
+    border: 1px solid var(--line);
+  }
+  @media (max-width: 1023px) {
+    .stub {
+      display: none;
+    }
+  }
+  .stub ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .stub li a {
+    display: block;
+    padding: 0 8px;
+    border-radius: 8px;
+    color: inherit;
+    font: 600 14px/28px var(--font);
+    text-decoration: none;
+  }
+  .stub li a:hover {
+    background: var(--bg-soft);
+  }
+  .stub li a[aria-current='page'] {
+    background: var(--bg-soft);
+    color: var(--blue);
+    font-weight: 800;
+  }
+  html[data-tema='tamna'] .stub li a[aria-current='page'] {
+    background: #0b7bbf;
+    color: #ffffff;
+  }
+  .plus-dugme {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 4px;
+    border-radius: 50%;
+    border: 2px solid var(--btnborder);
+    background: var(--blue);
+    color: #ffffff;
+  }
+  html[data-tema='tamna'] .plus-dugme {
+    background: #ffffff;
+    color: #0b4f7c;
+  }
+  .prekidac-vrste {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    margin: 8px 0;
+    padding: 0 4px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--ink);
+    font: 700 15px/20px var(--font);
+  }
+  .prekidac-vrste button {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: none;
+    color: inherit;
+    border-radius: 6px;
+  }
+
+  /* desna plutajuća traka (UI 4): 48 px uz desnu ivicu, samo računar */
+  .desna-traka {
+    position: fixed;
+    top: 100px;
+    right: 8px;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 48px;
+    padding: 8px 0;
+    border-radius: 14px;
+    background: var(--hto);
+    color: #ffffff;
+    box-shadow: var(--shadow-gore);
+  }
+  html[data-tema='tamna'] .desna-traka {
+    background: #003a6e;
+  }
+  @media (max-width: 1023px) {
+    .desna-traka {
+      display: none;
+    }
+  }
+
+  /* ikonska traka (telefon, slobodni režim; UI 4): 56 px pri dnu */
+  .ikonska-traka {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 50;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--hto);
+    color: #ffffff;
+    box-shadow: 0 -6px 18px rgba(0, 14, 38, 0.35);
+  }
+  html[data-tema='tamna'] .ikonska-traka {
+    background: #003a6e;
+  }
+  .ikonska-traka :focus-visible {
+    outline-color: #ffffff;
+  }
+
+  /* sadržaj ekrana */
+  .strana {
+    min-width: 0;
+  }
+  .kartica {
+    background: var(--bg-card);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  html[data-tema='tamna'] .kartica {
+    border: 1px solid var(--line);
+  }
+  .kartica-mirna {
+    background: var(--bg-soft);
+  }
+  .pomocni-tekst {
+    color: var(--ink-2);
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .prazno-stanje {
+    border: 2px dashed var(--line-strong);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    color: var(--ink-2);
+  }
+
+  /* dugmad (UI 5.8) */
+  .dugme {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 2px solid var(--btnborder);
+    font: 700 15px/20px var(--font);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  @media (max-width: 719px) {
+    .dugme {
+      min-height: 44px;
+    }
+  }
+  /* P-N2: na najužim ekranima (320 px) dug natpis dugmeta se lomi u dva reda umesto da širi stranicu */
+  @media (max-width: 400px) {
+    .dugme {
+      white-space: normal;
+      text-align: center;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+  .dugme-zeleno {
+    background: var(--green);
+    color: var(--green-on);
+  }
+  .dugme-zeleno:hover {
+    background: var(--green-h);
+  }
+  .dugme-plavo {
+    background: var(--blue);
+    color: #ffffff;
+  }
+  .dugme-plavo:hover {
+    background: var(--blue-h);
+  }
+  html[data-tema='tamna'] .dugme-plavo {
+    background: #ffffff;
+    color: #0b4f7c;
+  }
+  .dugme-crveno {
+    background: var(--red);
+    color: var(--red-on);
+  }
+  .dugme-linija {
+    background: transparent;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+  }
+  html[data-tema='tamna'] .dugme-linija {
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  .dugme-tekst {
+    background: none;
+    border: 0;
+    color: var(--blue);
+    padding: 0 8px;
+  }
+  .dugme-tekst:hover {
+    text-decoration: underline;
+  }
+  /* S1: tekstualni link koji se vidi kao link (boja linka + podvučen), npr. „Kako ređamo oglase“ */
+  .veza-tekst {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 700;
+  }
+  html[data-tema='tamna'] .veza-tekst {
+    color: #ffffff;
+  }
+  /* S1: naslov reda „Istaknuto · plaćeno“ je pravi naslov reda, ne sitan sivi tekst */
+  .naslov-placeno {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  html[data-tema='tamna'] .dugme-tekst {
+    color: #ffffff;
+  }
+  .dugme[disabled],
+  .dugme[aria-disabled='true'] {
+    background: var(--disabled-bg);
+    color: var(--disabled-ink);
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+  .dugme-siroko {
+    width: 100%;
+  }
+
+  /* prikazno polje (UI 5.9): izgleda kao polje, a tekst je unapred popunjen */
+  .polje-oznaka {
+    font: 700 13px/18px var(--font);
+    color: var(--ink);
+  }
+  .polje-prikaz {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--ink);
+  }
+  .polje-pomoc {
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--ink-2);
+  }
+
+  /* značke (UI 2.3, 5.10): iste u obe teme (svetle pilule sa tamnim tekstom) */
+  .znacka {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    font: 700 12px/16px var(--font);
+    white-space: nowrap;
+  }
+  .znacka-gradjanin {
+    background: #e8f1fa;
+    color: #0b4f7c;
+  }
+  .znacka-firma {
+    background: #0b4f7c;
+    color: #ffffff;
+  }
+  .znacka-istaknuto {
+    background: #fff1c2;
+    color: #6b4a00;
+  }
+  .znacka-sponzorisano {
+    background: #eceff3;
+    color: #44505c;
+  }
+  .znacka-poklon {
+    background: #ddf5e3;
+    color: #14602a;
+  }
+  .znacka-poeni {
+    background: #ede7fb;
+    color: #4b2e8f;
+  }
+  .znacka-model {
+    background: #eef2f6;
+    color: #44505c;
+  }
+
+  /* podnožje (UI 3: 13/20) */
+  .podnozje {
+    border-top: 1px solid var(--line);
+    padding: 16px;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--ink-2);
+  }
+  .podnozje a {
+    color: var(--blue);
+    text-decoration: underline;
+  }
+  html[data-tema='tamna'] .podnozje a {
+    color: #ffffff;
+  }
+  .podnozje select {
+    height: 44px;
+    padding: 0 8px;
+    border: 1.5px solid var(--line-strong);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--ink);
+    font: 400 14px var(--font);
+  }
+
+  /* skip linkovi: nevidljivi dok nemaju fokus */
+  .skip-link {
+    position: absolute;
+    left: 8px;
+    top: -200px;
+    z-index: 200;
+    padding: 10px 16px;
+    background: var(--bg-card);
+    color: var(--ink);
+    border: 3px solid var(--focus);
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  .skip-link:focus {
+    top: 40px;
+  }
+
+  /* pilula „Demo“ na ekranima bez okvira (U1–U3, R1–R5; UX 8) */
+  .pilula-demo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 16px auto;
+    padding: 4px 12px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--bg-card);
+    color: var(--ink);
+    font: 700 12px/16px var(--font);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* traka „Račva: za poene“ (UX 3.4): upozorenje na svim ekranima u račvi */
+  .traka-racve {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 16px;
+    padding: 8px 16px;
+    border-radius: 14px;
+    background: #fff1c2;
+    color: #6b4a00;
+    font: 700 14px/20px var(--font);
+  }
+  .traka-racve button {
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 2px solid #6b4a00;
+    background: transparent;
+    color: #6b4a00;
+    font: 700 13px/20px var(--font);
+  }
+
+  /* toast (UI 5.11): bela kartica sa levom linijom 4 px u boji stanja */
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 440px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    border-left: 4px solid var(--blue);
+    background: #ffffff;
+    color: #0f2233;
+    box-shadow: var(--shadow-gore);
+    font: 600 14px/20px var(--font);
+  }
+
+  /* dijalog (UI 5.15) */
+  .dijalog-kartica {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    padding: 24px;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #0f2233;
+    box-shadow: var(--shadow-gore);
+  }
+  .dijalog-kartica p {
+    color: #4a5b6b;
+  }
+  .dijalog-kartica .dugme-linija {
+    color: #0b4f7c;
+    border-color: #0b4f7c;
+  }
+  .dijalog-kartica .dugme-zeleno {
+    background: #1e8738;
+    color: #ffffff;
+    border-color: transparent;
+  }
+  .dijalog-kartica .dugme-tekst {
+    color: #0b4f7c;
+  }
+  .dijalog-kartica :focus-visible {
+    outline-color: #0b4f7c;
+  }
+
+  /* ilustrativna mapa (B6.5) */
+  .mapa-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+  }
+  .mapa-pozadina {
+    fill: var(--mapa-kopno-2);
+  }
+  .mapa-opstina {
+    fill: var(--mapa-kopno);
+    stroke: var(--mapa-granica);
+    stroke-width: 2;
+    stroke-linejoin: round;
+  }
+  .mapa-reka {
+    fill: none;
+    stroke: var(--mapa-voda);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .mapa-ostrvo {
+    fill: var(--mapa-kopno);
+    stroke: var(--mapa-granica);
+    stroke-width: 2;
+  }
+  .mapa-natpis {
+    paint-order: stroke; /* talas 4: obris u boji pozadine, slovo ostaje čitljivo i kad ga dodirne krug ili ivica */
+    stroke: var(--mapa-obris); /* debljina oreola je atribut u Mapa.tsx (raste sa veličinom slova) */
+    stroke-linejoin: round;
+    fill: var(--mapa-natpis);
+    font-family: var(--font);
+    font-weight: 700;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+  .mapa-natpis[data-strana='desno'] {
+    text-anchor: start;
+  }
+  /* T4-1: pločica iza natpisa i brojeva na mapi (puna podloga, kontrast ≥ 4,5:1 u obe teme) */
+  .mapa-ploca {
+    fill: var(--mapa-kopno);
+    pointer-events: none;
+  }
+  .mapa-ploca-voda {
+    fill: var(--mapa-obris-voda);
+  }
+  .mapa-ploca-broj {
+    fill: var(--mapa-obris-broj);
+  }
+  .mapa-natpis-voda {
+    paint-order: stroke;
+    stroke: var(--mapa-obris-voda);
+    stroke-linejoin: round;
+    fill: var(--mapa-natpis);
+    font-family: var(--font);
+    font-weight: 600;
+    font-style: italic;
+    text-anchor: middle;
+    pointer-events: none;
+  }
+  .mapa-krug {
+    fill: var(--mapa-krug);
+    fill-opacity: 0.25;
+    stroke: var(--mapa-krug-ivica);
+    stroke-width: 3;
+  }
+  .mapa-igla {
+    fill: var(--mapa-krug-ivica);
+  }
+  .mapa-oznaka {
+    margin-top: 8px;
+    color: var(--ink-2);
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  /* logo (inline SVG): boje iz SVG-a, slogan u Bebas Neue */
+  .logo-slogan {
+    font-family: 'Bebas Neue', 'Oswald', 'Arial Narrow', sans-serif;
+  }
+}
+
+/* =====================================================================
+   DODACI OKVIRA (polje pretrage, pomoćne klase)
+   ===================================================================== */
+@layer components {
+  .polje-pretrage .ikona-dugme {
+    width: 36px;
+    height: 36px;
+    color: #0b4f7c;
+  }
+  .polje-pretrage .ikona-dugme:hover {
+    background: #e8f4fc;
+  }
+  @media (max-width: 719px) {
+    .hide-m {
+      display: none !important;
+    }
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* =====================================================================
+   SLOJEVI I MENI (telefon)
+   ===================================================================== */
+@layer components {
+  /* sadržaj ima donji razmak jednak visini trake (--donji-visina postavlja okvir/PrelazEkrana.tsx) */
+  .okvir {
+    padding-bottom: var(--donji-visina, 0px);
+  }
+  .skrim {
+    border: 0;
+    background: rgba(0, 14, 38, 0.62);
+  }
+  .meni-panel {
+    position: absolute;
+    top: 36px;
+    left: 8px;
+    right: 8px;
+    max-height: calc(100% - 52px);
+    overflow: auto;
+    padding: 8px;
+    border-radius: 14px;
+    background: var(--bg-card);
+    color: var(--ink);
+    box-shadow: var(--shadow-gore);
+  }
+  html[data-tema='tamna'] .meni-panel {
+    border: 1px solid var(--line);
+  }
+  .meni-panel a,
+  .meni-panel button:not(.meni-zatvori) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: inherit;
+    font: 600 15px/20px var(--font);
+    text-align: left;
+    text-decoration: none;
+  }
+  .meni-panel button[aria-pressed='true'] {
+    background: var(--bg-soft);
+    font-weight: 800;
+  }
+  .meni-panel .naslov-grupe {
+    padding: 12px 12px 0;
+    font: 700 12px/16px var(--font);
+    color: var(--ink-2);
+  }
+  /* talas 4: #bfd7f0 na plavoj kartici (#007bb8) je samo 3,1:1 (UI 2.2), pa su natpisi grupa u meniju beli */
+  html[data-tema='tamna'] .padajuce .naslov-grupe,
+  html[data-tema='tamna'] .meni-panel .naslov-grupe,
+  html[data-tema='tamna'] .padajuce .pomocni-tekst,
+  html[data-tema='tamna'] .meni-panel .pomocni-tekst {
+    color: #ffffff;
+  }
+  .meni-zatvori {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--ink) !important;
+  }
+  .padajuce [aria-pressed='true'] {
+    background: var(--bg-soft);
+    font-weight: 800;
+  }
+}

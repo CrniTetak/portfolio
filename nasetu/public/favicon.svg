@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Nasetu</title>
+  <rect width="64" height="64" rx="14" fill="#C8401E"/>
+  <g fill="#FFFFFF">
+    <path d="M10 10H25V17H17V25H10Z"/>
+    <path d="M54 10H39V17H47V25H54Z"/>
+    <path d="M10 54H25V47H17V39H10Z"/>
+    <path d="M54 54H39V47H47V39H54Z"/>
+    <path d="M24 46V33A8 8 0 0 1 40 33V46Z"/>
+  </g>
+</svg>

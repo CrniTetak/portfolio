@@ -1,0 +1,1399 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./talas1.css";
+
+/* =====================================================================
+   TOKENI — iz dizajn/UI.md 2–4 i dizajn/uzorak-izgleda.html (jedino mesto gde se vrednosti definišu).
+   Tri sveta: televizor (tamna tema), telefon (svetla tema), okvir demoa (Noć + ćilibar).
+   Izgled se piše klasama ispod (a ne Tailwind pomoćnim klasama), da TV mere ostanu na jednom mestu.
+   ===================================================================== */
+@theme inline {
+  --color-*: initial;
+  --color-noc: var(--noc);
+  --color-pesak: var(--pesak);
+  --color-zemlja: var(--zemlja);
+  --color-dolina: var(--dolina);
+  --color-amber: var(--amber);
+  --font-sans: var(--font);
+}
+
+:root {
+  --font: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* osnovne (BREND) */
+  --noc: #10243e;
+  --pesak: #f4e9d8;
+  --pesak-svetao: #faf6ee;
+  --zemlja: #e0693c;
+  --zemlja-tamna: #c9552b;
+  --dolina: #0f7f73;
+  --dolina-tamna: #0b6a60;
+  --dolina-svetla: #3cc9b8;
+  --amber: #ffd24a;
+  /* televizor */
+  --tv-bg: #0b1626;
+  --tv-deep: #05090f;
+  --tv-surface: #172e4d;
+  --tv-line: #2a4468;
+  --tv-ink: #ffffff;
+  --tv-ink2: #b4c0cf;
+  --tv-ink3: #8fa0b5;
+  --tile: #f6f3ec;
+  /* telefon */
+  --ph-ink: #10243e;
+  --ph-ink2: #4a5b6b;
+  --ph-line: #76828f;
+  --ph-card-line: #e1d8c6;
+  --ph-readonly: #f1ece0;
+  /* okvir demoa */
+  --stranica: #0e1b2e;
+  --traka-hover: #1c3556;
+  /* TV mere (TV jedinice); krupno platno ih ne menja — menja se samo veličina platna, pa je tekst relativno krupniji */
+  --bz-x: 96px;
+  --bz-y: 54px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+body {
+  background: var(--stranica);
+  color: #fff;
+  font-family: var(--font);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+.ic {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: middle;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* jedno opšte pravilo za vidljiv fokus tastaturom; posebna pravila ispod ga samo prilagođavaju podlozi */
+:focus-visible {
+  outline: 3px solid var(--noc);
+  outline-offset: 2px;
+}
+:is(.traka, .oznaka-demoa, .daljinski, .podnozje-tv, .prekidac-uredjaja, .dijalog, .meni-telefona) :is(button, a):focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--noc);
+}
+.tel-platno :is(button, input, a):focus-visible {
+  outline: 3px solid var(--noc);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px #fff;
+}
+
+/* =====================================================================
+   OKVIR DEMOA — stranica, oznaka demoa (gore), traka priče (dole)
+   ===================================================================== */
+.stranica {
+  display: grid;
+  /* jedna kolona koja se NE širi po sadržaju (inače široka traka priče raširi celu stranicu na telefonu) */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  height: 100dvh;
+}
+.oznaka-demoa {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 16px;
+  background: var(--amber);
+  color: var(--noc);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid var(--noc);
+}
+.oznaka-demoa .ic {
+  font-size: 20px;
+}
+.sredina {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* ---- traka priče */
+.traka {
+  position: relative;
+  z-index: 50;
+  background: var(--noc);
+  color: var(--pesak);
+  border-top: 1px solid var(--tv-line);
+  font-size: 14px;
+}
+.traka-red {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 16px;
+}
+.traka-red--kartica {
+  border-bottom: 1px solid var(--tv-line);
+  min-height: 40px;
+}
+.traka-korak {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.traka-kartica {
+  flex: 1;
+  line-height: 18px;
+}
+.traka--slobodno .traka-kartica {
+  display: none;
+}
+.dugme-trake {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 2px solid var(--pesak);
+  background: transparent;
+  color: var(--pesak);
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.dugme-trake:hover:not(:disabled) {
+  background: var(--traka-hover);
+}
+.dugme-trake--glavno {
+  background: var(--zemlja);
+  border-color: var(--zemlja);
+  color: var(--noc);
+  font-weight: 700;
+}
+.dugme-trake--glavno:hover:not(:disabled) {
+  background: #ec7e55;
+  border-color: #ec7e55;
+}
+.dugme-trake:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.tacke {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.tacka {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--pesak);
+  background: transparent;
+  color: var(--pesak);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.tacka--prosla {
+  background: #27456b;
+}
+.tacka--trenutna {
+  background: var(--pesak);
+  color: var(--noc);
+}
+.razmak {
+  flex: 1;
+}
+.oznaka-traka {
+  color: var(--tv-ink2);
+  font-size: 14px;
+}
+.segment {
+  display: inline-flex;
+  border: 2px solid var(--pesak);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.segment button {
+  border: 0;
+  background: transparent;
+  color: var(--pesak);
+  height: 32px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.segment button[aria-pressed='true'] {
+  background: var(--pesak);
+  color: var(--noc);
+}
+.segment--uredjaj {
+  display: flex;
+  width: 100%;
+  border-color: var(--tv-ink2);
+}
+.segment--uredjaj button {
+  flex: 1;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+}
+
+/* ---- usko: jedan fiksni sloj dole (pločica koraka + glavna akcija) */
+.traka--usko .traka-red {
+  padding: 6px 12px;
+  gap: 8px;
+}
+.plocica-koraka {
+  flex: 1;
+  min-width: 0;
+  font-weight: 700;
+  line-height: 18px;
+}
+.plocica-koraka small {
+  display: block;
+  font-weight: 500;
+  color: var(--tv-ink2);
+}
+.meni-telefona {
+  position: absolute;
+  right: 8px;
+  bottom: calc(100% + 8px);
+  z-index: 70;
+  width: min(360px, calc(100vw - 16px));
+  background: var(--noc);
+  border: 2px solid var(--pesak);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---- dijalog Restarta i toast */
+.dijalog-pozadina {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: #000a;
+  display: grid;
+  place-items: center;
+}
+.dijalog {
+  background: var(--pesak-svetao);
+  color: var(--ph-ink);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 360px;
+  font-size: 16px;
+}
+.dijalog h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+.dijalog-dugmad {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+.dijalog-dugmad button {
+  flex: 1;
+  height: 48px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid var(--noc);
+}
+.dijalog-da {
+  background: var(--noc);
+  color: var(--pesak);
+}
+.dijalog-ne {
+  background: transparent;
+  color: var(--noc);
+}
+
+/* =====================================================================
+   RASPORED — laptop (široko): televizor + daljinski levo, telefon desno; usko: jedan uređaj + prekidač
+   ===================================================================== */
+.raspored {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  gap: 16px;
+  padding: 6px 16px;
+}
+.raspored--siroko {
+  grid-template-columns: minmax(0, 72fr) minmax(0, 24fr);
+}
+.kolona {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.natpis-uredjaja {
+  align-self: stretch;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--tv-ink2);
+  min-height: 22px;
+}
+.natpis-uredjaja b {
+  color: #fff;
+  font-size: 16px;
+}
+.uklopi {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  align-self: stretch;
+  display: grid;
+  /* staza ne sme da raste od sadržaja (inače umanjeni uređaj gura sam sebe i prelazi u traku) */
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  overflow: hidden;
+}
+.okvir-uredjaja {
+  background: var(--tv-deep);
+  border: 2px solid var(--tv-line);
+  position: relative;
+}
+.okvir-uredjaja--tv {
+  border-radius: 14px;
+  padding: 8px;
+}
+.okvir-uredjaja--tel {
+  border-radius: 36px;
+  padding: 10px;
+}
+.okvir-uredjaja--sija {
+  border-color: var(--zemlja);
+  box-shadow: 0 0 0 3px var(--zemlja);
+}
+.uklopljeno {
+  position: relative;
+  overflow: hidden;
+}
+.uklopljeno--tv {
+  border-radius: 6px;
+}
+.uklopljeno--tel {
+  border-radius: 28px;
+}
+.platno {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+.skenirano {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: -12px;
+  transform: translate(-50%, -100%);
+  background: var(--zemlja);
+  color: var(--noc);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.podnozje-tv {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 90px;
+}
+.podnozje-tekst {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 240px;
+  font-size: 14px;
+  color: var(--tv-ink2);
+}
+.podnozje-tekst b {
+  color: #fff;
+  font-size: 16px;
+}
+
+/* ---- daljinski na ekranu */
+.daljinski {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.dg {
+  width: 40px;
+  height: 36px;
+  border-radius: 10px;
+  border: 2px solid var(--tv-line);
+  background: var(--tv-surface);
+  color: #fff;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.dg:hover {
+  background: #244269;
+}
+.dg:active,
+.dg--pritisnut {
+  background: var(--zemlja);
+  color: var(--noc);
+  border-color: var(--zemlja);
+}
+.dg--tekst {
+  width: auto;
+  height: 40px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 6px;
+  display: inline-flex;
+  align-items: center;
+}
+.krst {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(3, 28px);
+  gap: 3px;
+}
+.krst .dg {
+  height: 28px;
+}
+.krst .dg--ok {
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 50%;
+}
+.daljinski--kompaktan {
+  gap: 12px;
+}
+.izabrano-red {
+  align-self: stretch;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--tv-ink2);
+  padding: 2px 4px;
+}
+.savet {
+  align-self: stretch;
+  font-size: 14px;
+  color: var(--tv-ink2);
+  padding: 0 4px;
+}
+
+/* ---- usko */
+.usko {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 12px;
+  overflow: hidden;
+}
+.usko--tel {
+  padding: 0;
+  gap: 0;
+  overflow: auto;
+}
+.usko .uklopi {
+  flex: 1;
+}
+.usko-tv-uspravno {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  flex: 1;
+}
+.usko-tv-uspravno .uklopi {
+  flex: none;
+  height: auto;
+  display: block;
+}
+
+/* =====================================================================
+   TELEVIZOR — platno (TV jedinice), ekrani, kartice
+   ===================================================================== */
+.tv-platno {
+  background: radial-gradient(1400px 700px at 80% -10%, #1a3a63 0, transparent 60%), var(--tv-bg);
+  color: var(--tv-ink);
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 400;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+.tv-platno--krupno {
+  --bz-x: 48px;
+  --bz-y: 27px;
+}
+.tv-ekran {
+  position: absolute;
+  inset: 0;
+}
+.tv-pilula-demo {
+  position: absolute;
+  right: var(--bz-x);
+  bottom: 10px;
+  z-index: 6;
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 20px;
+  background: var(--amber);
+  color: var(--noc);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+.tv-izabrano {
+  position: absolute;
+  left: var(--bz-x);
+  bottom: 10px;
+  z-index: 6;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--tv-ink3);
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tv-toast {
+  position: absolute;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+  z-index: 40;
+  background: #fff;
+  color: var(--noc);
+  border-radius: 20px;
+  padding: 16px 32px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 40px;
+  text-align: center;
+  max-width: 85%;
+}
+.tv-gornja {
+  position: absolute;
+  left: var(--bz-x);
+  right: var(--bz-x);
+  top: var(--bz-y);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  z-index: 5;
+}
+.tv-znak {
+  height: 64px;
+  flex: none;
+  display: block;
+}
+.tv-znak svg {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+.tv-nav-okno {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 24px;
+  margin: -24px -8px;
+}
+.tv-nav {
+  display: flex;
+  gap: 2px;
+  width: max-content;
+  margin: 0 auto;
+}
+.tv-nav-stavka {
+  height: 72px;
+  padding: 0 18px;
+  border-radius: 36px;
+  font-weight: 600;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  color: var(--tv-ink2);
+  white-space: nowrap;
+}
+.tv-nav-stavka--trenutna {
+  color: #fff;
+  box-shadow: inset 0 -6px 0 var(--zemlja);
+}
+.tv-nav-stavka--trenutna[data-izabran] {
+  box-shadow: 0 0 0 3px #05090f, 0 0 0 8px #fff, 0 0 0 11px #05090f, 0 24px 40px 10px #0009, inset 0 -6px 0 var(--zemlja);
+}
+.tv-profil {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+  color: var(--tv-ink2);
+  flex: none;
+}
+.tv-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--tv-surface);
+  border: 3px solid var(--tv-line);
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+.tv-avatar .ic {
+  font-size: 30px;
+}
+/* sadržaj ekrana: uspravno se pomera po redovima (data-tv-skrol="y"); redovi se pomeraju vodoravno (data-tv-skrol="x") */
+.tv-sadrzaj {
+  position: absolute;
+  left: var(--bz-x);
+  right: var(--bz-x);
+  top: calc(var(--bz-y) + 100px);
+  bottom: 56px;
+  overflow: hidden;
+  /* 40 sa strane: prsten izbora (11) + uvećanje 6 % (do 27 kod najšire kartice) ne sme da dodirne ivicu kontejnera (UI 4) */
+  padding: 12px 40px 0;
+}
+.tv-sadrzaj--pun {
+  top: var(--bz-y);
+}
+.tv-grupa {
+  margin: 0 -40px 36px;
+  padding: 0 40px;
+}
+.tv-naslov-reda {
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  padding-left: 4px;
+}
+.tv-naslov-reda small {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: var(--tv-ink2);
+  margin-left: 16px;
+}
+.tv-red-okno {
+  overflow: hidden;
+  margin: 0 -40px;
+  padding: 28px 40px;
+}
+.tv-red {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+}
+.tv-mreza {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  gap: 40px 32px;
+  padding: 28px 0;
+  justify-content: start;
+}
+.tv-napomena {
+  color: var(--tv-ink2);
+  font-size: 24px;
+  line-height: 32px;
+  margin: 0 0 0 4px;
+}
+.tv-naslov-ekrana {
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+/* ---- izbor: pravi <button>, bez nativnog izgleda; vidljiv izbor = prsten u tri sloja + uvećanje 6 % + senka (UI 2.3) */
+/* Osnova ima nultu specifičnost (:where), da je klase komponenti (kartica, nav, dugme) uvek pregaze. */
+:where(.tv-fokus) {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.tv-fokus[data-izabran] {
+  transform: scale(1.06);
+  z-index: 10;
+  box-shadow: 0 0 0 3px #05090f, 0 0 0 8px #fff, 0 0 0 11px #05090f, 0 24px 40px 10px #0009;
+}
+.tv-fokus:active {
+  transform: scale(0.985);
+}
+.tv-fokus[data-izabran]:active {
+  transform: scale(1.02);
+}
+.tv-fokus[aria-disabled='true'] {
+  color: var(--tv-ink3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tv-fokus {
+    transition: none;
+  }
+  .tv-fokus[data-izabran] {
+    transform: none;
+  }
+  .tv-fokus:active,
+  .tv-fokus[data-izabran]:active {
+    transform: none;
+  }
+}
+
+/* ---- značke */
+.znacka {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.znacka--besplatno {
+  background: var(--dolina-svetla);
+  color: var(--noc);
+}
+.znacka--cena {
+  background: var(--pesak);
+  color: var(--noc);
+}
+.znacka--u-toku {
+  background: var(--zemlja);
+  color: var(--noc);
+}
+.znacka--reklama {
+  background: var(--amber);
+  color: var(--noc);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.znacka--pretplacen {
+  background: transparent;
+  color: var(--dolina-svetla);
+  border: 3px solid var(--dolina-svetla);
+}
+.znacka--nije {
+  background: var(--tv-line);
+  color: var(--tv-ink);
+}
+
+/* ---- pločica logotipa (neutralna #F6F3EC) */
+.plocica {
+  position: relative;
+  background: var(--tile);
+  color: var(--noc);
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  padding: 0 16px;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+}
+.plocica--kartica {
+  width: 100%;
+  height: 150px;
+  border-radius: 0;
+}
+.plocica--vodic {
+  width: 300px;
+  height: 88px;
+  font-size: 28px;
+  line-height: 32px;
+}
+.plocica--mala {
+  width: 176px;
+  height: 56px;
+  font-size: 24px;
+  line-height: 28px;
+  border-radius: 12px;
+  padding: 0 8px;
+}
+.plocica--duga {
+  font-size: 30px;
+  line-height: 34px;
+}
+.plocica-sadrzaj {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8% 7%;
+  min-height: 0;
+}
+.plocica img {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  display: block;
+}
+.plocica-sadrzaj--naziv img {
+  max-height: 62%;
+}
+.plocica-naziv {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+}
+.plocica--mala {
+  font-size: 20px;
+  line-height: 22px;
+}
+.plocica--mala.plocica--duga {
+  font-size: 16px;
+  line-height: 18px;
+}
+.plocica > span {
+  overflow-wrap: anywhere;
+}
+.plocica--mala .plocica-naziv,
+.plocica--vodic .plocica-naziv {
+  font-size: 18px;
+  line-height: 20px;
+}
+
+/* ---- kartice */
+.kartica-kanala {
+  width: 320px;
+  background: var(--tv-surface);
+  border-radius: 20px;
+  overflow: hidden;
+  flex: none;
+  display: block;
+}
+.kartica-kanala-info {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.meta {
+  color: var(--tv-ink2);
+  font-size: 24px;
+  line-height: 32px;
+}
+.kartica-emisije {
+  width: 544px;
+  background: var(--tv-surface);
+  border-radius: 20px;
+  overflow: hidden;
+  flex: none;
+  display: block;
+}
+.kartica-emisije-slika,
+.kartica-emisije-info,
+.kartica-emisije-naziv,
+.kartica-emisije-info .meta {
+  display: block;
+}
+.kartica-naziv {
+  color: #fff;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+}
+.kartica-emisije-slika {
+  height: 200px;
+  position: relative;
+}
+.kartica-emisije-slika .znacka {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+.kartica-emisije-trake {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  background: #0008;
+}
+.kartica-emisije-trake i {
+  display: block;
+  height: 100%;
+  background: var(--zemlja);
+}
+.kartica-emisije-info {
+  padding: 12px 20px 16px;
+}
+.kartica-emisije-naziv {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+}
+.kartica-paketa {
+  width: 408px;
+  background: var(--tv-surface);
+  border-radius: 20px;
+  padding: 20px 24px 22px;
+  border-top: 8px solid var(--zemlja);
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kartica-paketa-naziv {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+}
+.kartica-paketa-plocice {
+  display: flex;
+  gap: 12px;
+}
+.kartica-paketa-cena {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+}
+.kartica-paketa-cena small {
+  font-size: 24px;
+  color: var(--tv-ink2);
+  font-weight: 500;
+}
+.gradijent-0 {
+  background: linear-gradient(135deg, #3c2f5c, #c05a45);
+}
+.gradijent-1 {
+  background: linear-gradient(135deg, #0f4c5c, #3cc9b8);
+}
+.gradijent-2 {
+  background: linear-gradient(135deg, #5c3b1e, #e0a43c);
+}
+.gradijent-3 {
+  background: linear-gradient(135deg, #1c3a6b, #6a8fd6);
+}
+.gradijent-4 {
+  background: linear-gradient(135deg, #4a2c4f, #d9825b);
+}
+.gradijent-5 {
+  background: linear-gradient(135deg, #1f4d3d, #c9b458);
+}
+.tv-dugme {
+  height: 88px;
+  padding: 0 44px;
+  border-radius: 44px;
+  font-size: 32px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+.tv-dugme--glavno {
+  background: var(--zemlja);
+  color: var(--noc);
+}
+.tv-dugme--sporedno {
+  background: transparent;
+  color: #fff;
+  border: 4px solid #fff;
+}
+.tv-dugme .ic {
+  font-size: 32px;
+}
+.tapeta {
+  height: 300px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 56px;
+  gap: 40px;
+  background: linear-gradient(100deg, #0a1a2e 0%, #12304f 40%, #7a3a2a 100%);
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 24px;
+}
+.tapeta::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -60px;
+  width: 620px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e0693c 0, #e0693c00 65%);
+  opacity: 0.55;
+}
+.tapeta-tekst {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+.tapeta h2 {
+  margin: 8px 0 4px;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 700;
+}
+.tapeta p {
+  margin: 0 0 18px;
+  color: var(--tv-ink2);
+}
+.tapeta .plocica {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 150px;
+}
+.tv-trake-filtera {
+  display: flex;
+  gap: 16px;
+  padding: 24px 0;
+}
+.tv-prekidac {
+  height: 72px;
+  padding: 0 32px;
+  border-radius: 36px;
+  background: var(--tv-surface);
+  font-size: 32px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.tv-prekidac--izabran {
+  background: var(--pesak);
+  color: var(--noc);
+}
+
+/* ---- TV vodič (mreža 15 minuta: 19:00–23:00) */
+.vodic-okno {
+  overflow: hidden;
+  margin: 0 -40px;
+  padding: 24px 40px;
+}
+.vodic {
+  display: grid;
+  grid-template-columns: 300px repeat(16, minmax(80px, 1fr));
+  gap: 4px;
+  min-width: 1644px;
+}
+.vodic-sat {
+  color: var(--tv-ink2);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding: 0 4px;
+  grid-row: 1;
+}
+.vodic-polje {
+  background: var(--tv-surface);
+  border-radius: 16px;
+  min-height: 88px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.vodic-polje--sada {
+  border-left: 8px solid var(--zemlja);
+}
+.vodic-polje--reklama {
+  background: #3a3020;
+  padding: 10px 6px;
+  align-items: center;
+}
+.vodic-polje--reklama .znacka {
+  padding: 0 8px;
+  letter-spacing: 0.02em;
+}
+.vodic-naziv {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vodic-vreme {
+  color: var(--tv-ink2);
+  font-size: 24px;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vodic-kanal {
+  display: flex;
+  align-items: center;
+}
+
+/* ---- ekran „Uskoro“ */
+.uskoro {
+  position: absolute;
+  left: var(--bz-x);
+  right: var(--bz-x);
+  top: var(--bz-y);
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+}
+.uskoro-oznaka {
+  color: var(--tv-ink2);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.uskoro h1 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 700;
+}
+.uskoro p {
+  margin: 0 0 24px;
+  color: var(--tv-ink2);
+  max-width: 900px;
+}
+
+/* =====================================================================
+   TELEFON — platno 360 × 760 (svetla tema)
+   ===================================================================== */
+.tel-platno {
+  background: var(--pesak-svetao);
+  color: var(--ph-ink);
+  font-size: 16px;
+  line-height: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.tel-platno--prirodno {
+  min-height: 100%;
+  width: 100%;
+  overflow: visible;
+}
+.tel-pilula {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+.tel-pilula span {
+  background: var(--amber);
+  color: var(--noc);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+.tel-gornja {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  background: #fff;
+  border-bottom: 1px solid var(--ph-card-line);
+  flex: none;
+}
+.tel-gornja h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+.tel-ikona {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--ph-ink);
+  font-size: 24px;
+  display: grid;
+  place-items: center;
+}
+.tel-telo {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+}
+.tel-kartica {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid var(--ph-card-line);
+}
+.tel-napomena {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ph-ink2);
+}
+.tel-dugme {
+  height: 56px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--dolina);
+  color: #fff;
+}
+.tel-dugme:hover:not(:disabled) {
+  background: var(--dolina-tamna);
+}
+.tel-dugme--sporedno {
+  background: transparent;
+  color: var(--noc);
+  border-color: var(--noc);
+}
+
+/* ---- uvodni ekrani i table (probni okvir) */
+.strana {
+  height: 100%;
+  overflow: auto;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+}
+.strana-sadrzaj {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.strana-sadrzaj h1 {
+  margin: 0;
+  font-size: 36px;
+  line-height: 44px;
+}
+.strana-sadrzaj p {
+  margin: 0;
+  color: var(--tv-ink2);
+}
+.strana-znak {
+  height: 64px;
+}
+.strana-znak svg {
+  height: 64px;
+  width: auto;
+  max-width: 100%; /* na uskom telefonu se znak umanjuje, ne seče */
+}
+.strana-veza {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 12px;
+  background: var(--zemlja);
+  color: var(--noc);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.tv-napomena--u-redu {
+  align-self: center;
+}
+/* prozor preko ekrana (Kako se upravlja, panel, poruka) */
+.tv-prozor {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  background: #0b1626ee;
+  display: grid;
+  place-items: center;
+}
+.tv-prozor-kartica {
+  width: min(1000px, 90%);
+  background: var(--tv-surface);
+  border-radius: 28px;
+  padding: 48px 56px;
+  border: 4px solid var(--tv-line);
+}
+.tv-prozor-kartica h3 {
+  font-size: 48px;
+  line-height: 56px;
+  margin: 0 0 20px;
+}
+.tv-prozor-kartica ul {
+  margin: 0 0 32px;
+  padding-left: 36px;
+  font-size: 32px;
+  line-height: 48px;
+}

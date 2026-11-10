@@ -1,0 +1,9 @@
+[
+  {
+    "id": "klasik-veceri",
+    "commons": "Big buck bunny 16bit 2K sample.tif",
+    "alt": "Kadar iz otvorenog animiranog filma Big Buck Bunny (probna slika programa)",
+    "emisije": ["klasik-tv-1"],
+    "fokus": [0.5, 0.5]
+  }
+]

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="t">
+  <title id="t">SWAPIT</title>
+  <defs>
+    <linearGradient id="fv-telo" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#2A8EDB"/>
+      <stop offset="1" stop-color="#19B4F3"/>
+    </linearGradient>
+    <g id="fv-traka">
+      <path d="M80 108 C62 92 98 80 114 66" fill="none" stroke-width="28" stroke-linecap="round"/>
+      <polygon points="136.6,43.4 133.1,85.1 94.9,46.9" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </defs>
+  <!-- Za 16-32 px: pun krug bez podignutog ugla; dve široke trake u obliku S -->
+  <circle cx="32" cy="32" r="31" fill="url(#fv-telo)"/>
+  <g transform="translate(32 33) scale(0.4) translate(-100 -104)" fill="#F2F2F4" stroke="#F2F2F4">
+    <use href="#fv-traka"/>
+    <use href="#fv-traka" transform="rotate(180 100 104)"/>
+  </g>
+</svg>

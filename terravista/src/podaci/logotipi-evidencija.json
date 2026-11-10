@@ -1,0 +1,47 @@
+{
+  "cmc": {
+    "stranica": "https://commons.wikimedia.org/wiki/File:CMC_TV_Croatia.svg",
+    "licencaSaStranice": "Public domain",
+    "ogranicenja": "trademarked",
+    "autor": "Croatia Records",
+    "datumProvere": "2026-10-22",
+    "sha256": "d39e0edb1da758bf24e74ad739957ba5fd5337f73007dc1a3d56259e4a164cda",
+    "obrada": "SVG očišćen (skripte, foreignObject, on* atributi, spoljne reference, komentari, metapodaci); oblik i boje nepromenjeni"
+  },
+  "viasat-explore": {
+    "stranica": "https://commons.wikimedia.org/wiki/File:Viasat_Explore_2026.svg",
+    "licencaSaStranice": "Public domain",
+    "ogranicenja": "trademarked",
+    "autor": "Viasat World",
+    "datumProvere": "2026-10-22",
+    "sha256": "c6a03868dbfb0882c7f829b2d2cdb3015db6582b7e6f07a5196184aceb9bf8a5",
+    "obrada": "SVG očišćen (skripte, foreignObject, on* atributi, spoljne reference, komentari, metapodaci); oblik i boje nepromenjeni"
+  },
+  "rtl": {
+    "stranica": "https://commons.wikimedia.org/wiki/File:Rtl-logo.svg",
+    "licencaSaStranice": "Public domain",
+    "ogranicenja": "trademarked",
+    "autor": "LoMit",
+    "datumProvere": "2026-10-22",
+    "sha256": "3d147e9ee014ee0a2605b59860f8a44276ad93a707c1b96878ee8e98baf7c48c",
+    "obrada": "SVG očišćen (skripte, foreignObject, on* atributi, spoljne reference, komentari, metapodaci); oblik i boje nepromenjeni"
+  },
+  "prva": {
+    "stranica": "https://commons.wikimedia.org/wiki/File:Prva-logo_(1).png",
+    "licencaSaStranice": "Public domain",
+    "ogranicenja": "trademarked",
+    "autor": "PRVA TELEVIZIJA D.O.O.",
+    "datumProvere": "2026-10-22",
+    "sha256": "103e762c972a16e880de73ed6a3b0617361052b8b951543f10accf50c0a3d716",
+    "obrada": "PNG umanjen u WebP 640×320 (bez izmene sadržaja)"
+  },
+  "arena-sport": {
+    "stranica": "https://commons.wikimedia.org/wiki/File:Arena_Sport_logo_2019.svg",
+    "licencaSaStranice": "Public domain",
+    "ogranicenja": "trademarked",
+    "autor": "Arena Channels Group Doo",
+    "datumProvere": "2026-10-22",
+    "sha256": "cc0393098aec9360735098b689b5233cb57a36576f878876b1314ca491e61e86",
+    "obrada": "SVG očišćen (skripte, foreignObject, on* atributi, spoljne reference, komentari, metapodaci); oblik i boje nepromenjeni"
+  }
+}

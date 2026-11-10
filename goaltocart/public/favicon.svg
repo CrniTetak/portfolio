@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GoalToCart">
+  <title>GoalToCart - koncept A, znak / favicon</title>
+  <rect width="64" height="64" rx="14" fill="#12284B"/>
+  <path d="M43.3 20.7 A16 16 0 1 0 48 32 H33" fill="none" stroke="#FFFFFF" stroke-width="5.5"/>
+  <circle cx="33" cy="32" r="4.5" fill="#19B5A5"/>
+</svg>

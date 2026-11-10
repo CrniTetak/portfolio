@@ -1,0 +1,901 @@
+[
+  {
+    "id": "ana-ps2",
+    "datoteka": "Sony-PlayStation-2-30001-Console-FL.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 1)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Konzola za video igre sa dva džojstika",
+    "ekrani": [
+      "O1",
+      "P1",
+      "X1",
+      "X2"
+    ],
+    "pregled": "proizvod na beloj pozadini; mali znak proizvođača na konzoli (naziv proizvoda je dozvoljen, znak nije istaknut)"
+  },
+  {
+    "id": "kat-namestaj",
+    "datoteka": "Armchair MET DT8323.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 1)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stara fotelja sa drvenim rukonaslonima",
+    "ekrani": [
+      "P1"
+    ],
+    "pregled": "muzejski predmet; bez lica i natpisa"
+  },
+  {
+    "id": "kat-it-oprema",
+    "datoteka": "Apple computer monitors desk (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 1)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Monitori na radnom stolu",
+    "ekrani": [
+      "P1"
+    ],
+    "pregled": "pregledano u talasu 4: monitor i biljka na stolu, bez vidljivog logoa, lica i natpisa"
+  },
+  {
+    "id": "kat-sveze-voce-i-povrce",
+    "datoteka": "Apples in basket 2018 G1.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 1)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Jabuke u pletenoj korpi na travi",
+    "ekrani": [
+      "P1"
+    ],
+    "pregled": "bez lica, logoa i natpisa",
+    "kvalitet": 0.5
+  },
+  {
+    "id": "romani-ive-andrica-komplet",
+    "datoteka": "Old books on a shelf (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stare knjige na polici",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (zamena slike sa natpisom „PRADA“): police sa knjigama bez čitljivih naslova, logoa i lica"
+  },
+  {
+    "id": "crna-ugaona-garnitura",
+    "datoteka": "Couch-furniture-living-room-sofa (24300293356).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.6
+    ],
+    "alt": "Crna kožna garnitura u dnevnoj sobi",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "narandzasta-fotelja",
+    "datoteka": "Two orange armchairs in Katzen hallway.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Dve narandžaste fotelje",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "smedji-sto",
+    "datoteka": "Markedshallen (Dining table).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.6
+    ],
+    "alt": "Drveni sto sa stolicama",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.55
+  },
+  {
+    "id": "komoda-od-hrastovine",
+    "datoteka": "Chest of Drawers MET 85J ACF3111R7.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Komoda od tamnog drveta sa fiokama",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "krompir-20-kg",
+    "datoteka": "Irish potatoes in a sack in a market.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Krompir u džaku na pijaci",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4: krompir u džaku, bez lica i natpisa"
+  },
+  {
+    "id": "kupus-10-glavica",
+    "datoteka": "Brassica oleracea 2011 G1.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Glavica kupusa",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "kruska-abate-fetel-5-kg",
+    "datoteka": "Four pears.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Četiri kruške",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "grozdje-5-kg",
+    "datoteka": "Grapes, Dry Creek Valley-7705.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Grozdovi na čokotu",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "crne-slusalice",
+    "datoteka": "Black brown headphones wired.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Crne slušalice sa kablom",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "eksterni-hard-disk-1-tb",
+    "datoteka": "35-Desktop-Hard-Drive.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Hard disk sa otvorenim kućištem",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "tastatura-i-mis",
+    "datoteka": "Apple mouse and keyboard (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Bežična tastatura i miš na stolu",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "dzojstik-za-konzolu",
+    "datoteka": "Nintendo-Switch-Pro-Controller-FL.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Crni džojstik za konzolu",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "stoni-fudbal",
+    "datoteka": "Foosball table set.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stoni fudbal",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "jovanine-knjige",
+    "datoteka": "Leather bound books (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Složene stare knjige u kožnim koricama",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4: složene stare knjige bez čitljivih naslova i logoa"
+  },
+  {
+    "id": "autosediste-do-18-kg",
+    "datoteka": "Kindersitz Mother Choice.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Dečje sedište za automobil",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "bez lica; mala značka na naslonu nečitljiva"
+  },
+  {
+    "id": "gradski-bicikl-28-inca",
+    "datoteka": "Azor Oma Oklahoma R3D Violet Matt.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Gradski bicikl sa korpom na kaldrmi",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.55
+  },
+  {
+    "id": "zenski-bicikl-sa-korpom",
+    "datoteka": "Münster, Roxel, St.-Pantaleon-Kirche, Fahrrad -- 2025 -- 2696.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Bicikl sa korpom naslonjen na zid",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.38
+  },
+  {
+    "id": "set-bucica-2-10-kg",
+    "datoteka": "Colorful dumbbells of various sizes.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Bučice raznih veličina",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (zamena slike sa čitljivim natpisom na tegovima): šarene bučice, bez čitljivog natpisa i lica"
+  },
+  {
+    "id": "strunjaca-za-vezbanje",
+    "datoteka": "Blue exercise mat 20160810.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Plava strunjača za vežbanje na travi",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "rolsue-broj-38",
+    "datoteka": "Impala Marawa Quad Skates Comparison.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Par rolšua",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "kozna-jakna",
+    "datoteka": "Black worn leather jacket detail 1.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Crna kožna jakna",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.36
+  },
+  {
+    "id": "zenski-kaput-velicina-40",
+    "datoteka": "Red Coat in Wool designed by Sybil Connolly - Full Lenght Front.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.45
+    ],
+    "alt": "Crveni kaput na lutki",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "svecano-odelo",
+    "datoteka": "Grey and navy suit on mannequin.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Svečano odelo na lutki",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "retro-konzola-sa-igrama",
+    "datoteka": "Magnavox-Odyssey-Console-Set.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stara konzola za video igre",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "proizvod na beloj pozadini; sitna oznaka na kućištu nečitljiva"
+  },
+  {
+    "id": "sator-za-cetiri-osobe",
+    "datoteka": "Zagedan Ridge, Camping tent, Caucasus Mountains.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Šator na planinskoj livadi",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "retro-laptop",
+    "datoteka": "Vintage Laptop 2010.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stari prenosni računar",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "yugo-gv-1988",
+    "datoteka": "Yugo 45 Retro Classics 2025 DSC 7616.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Crveni Yugo 45",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "muzejski izložak; bez lica u prvom planu, tablica nečitljiva, ime modela je naziv proizvoda"
+  },
+  {
+    "id": "kolica-za-bebe",
+    "datoteka": "An Empty Stroller Stands Near Beach (32327758038).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Prazna dečja kolica pored mora",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (zamena slike sa prolaznicima): prazna kolica na plaži, bez ljudi, natpisa i logoa"
+  },
+  {
+    "id": "dekorativna-lampa",
+    "datoteka": "Lamp on a bedside table.JPG",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Staklena stona lampa",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "violina",
+    "datoteka": "Violin & bow.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Violina sa gudalom",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "ukulele",
+    "datoteka": "17 inch pocket ukulele branded \"ultnice\".jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Mali ukulele na jastuku",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.5
+  },
+  {
+    "id": "rucni-sat",
+    "datoteka": "Angled view of a fashion wristwatch with purple dial and leather strap 02.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Ručni sat sa crnim kaišem",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4: sat bez čitljivog imena marke"
+  },
+  {
+    "id": "gramofon",
+    "datoteka": "White turntable playing music (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Beli gramofon",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "bastenski-sto-sa-stolicama",
+    "datoteka": "Garden furniture table chairs Gibberd Garden Essex Harlow England.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Baštenski sto sa dve stolice",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa",
+    "kvalitet": 0.5
+  },
+  {
+    "id": "kancelarijska-stolica",
+    "datoteka": "Buerostuhl (fcm).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Kancelarijska stolica",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "keramicka-vaza",
+    "datoteka": "Naqshli sopol guldon.png",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Keramička vaza",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "saksije-i-zardinjere",
+    "datoteka": "Weathered Pots (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Saksije od terakote",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "polica-za-knjige",
+    "datoteka": "Bookshelf (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Polica puna knjiga",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4: police sa knjigama, nasloni sitni i nečitljivi, bez lica"
+  },
+  {
+    "id": "radio-aparat",
+    "datoteka": "Old radio, Winschoten (2019).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Stari radio-aparat",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "sargarepa-5-kg",
+    "datoteka": "Fresh Carrots (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Šargarepa",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "paradajz-iz-baste",
+    "datoteka": "Tomatoes For Sale (Unsplash).jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.5
+    ],
+    "alt": "Zreli paradajz",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  },
+  {
+    "id": "motokultivator",
+    "datoteka": "Two-wheel tractor 2007.jpg",
+    "namena": "kartica 1:1 i detalj 4:3 (talas 4)",
+    "namene": [
+      "kartica",
+      "detalj"
+    ],
+    "fokus": [
+      0.5,
+      0.55
+    ],
+    "alt": "Crveni motokultivator sa prikolicom",
+    "ekrani": [
+      "O1",
+      "P5"
+    ],
+    "pregled": "pregledano u talasu 4 (kartica 800 px): predmet bez lica, bez čitljivih natpisa, tablica i istaknutih logoa"
+  }
+]

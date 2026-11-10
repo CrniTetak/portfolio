@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nasetu simbol">
+  <title>Nasetu</title>
+  <g fill="#C8401E">
+    <!-- četiri ugla kadra -->
+    <path d="M4 4H22V11H11V22H4Z"/>
+    <path d="M60 4H42V11H53V22H60Z"/>
+    <path d="M4 60H22V53H11V42H4Z"/>
+    <path d="M60 60H42V53H53V42H60Z"/>
+    <!-- otvor prostora (luk/vrata) u sredini kadra -->
+    <path d="M22 46V30A10 10 0 0 1 42 30V46Z"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-*
+.vitest
+.wrangler
+_snimci
+*.log
+.env*

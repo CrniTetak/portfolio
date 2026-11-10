@@ -1,0 +1,53 @@
+{
+  "name": "terravista-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4193 --strictPort",
+    "provera": "tsc --noEmit",
+    "test": "vitest run",
+    "e2e:fokus": "node skripte/e2e-fokus.mjs",
+    "e2e:okvir": "node skripte/e2e-okvir.mjs",
+    "snimci": "node skripte/snimci.mjs",
+    "slike": "node skripte/slike.mjs",
+    "e2e:prica": "node skripte/e2e-prica.mjs",
+    "e2e:raspored": "node skripte/e2e-raspored.mjs",
+    "e2e:zabrane": "node skripte/e2e-zabrane.mjs",
+    "e2e:slobodno": "node skripte/e2e-slobodno.mjs",
+    "e2e:dorada": "node skripte/e2e-dorada.mjs",
+    "e2e:telefon": "node skripte/e2e-telefon.mjs",
+    "e2e:kontrast": "node skripte/e2e-kontrast.mjs",
+    "e2e:axe": "node skripte/e2e-axe.mjs",
+    "e2e:tezina": "node skripte/e2e-tezina.mjs",
+    "snimci:prica": "node skripte/snimci-prica.mjs"
+  },
+  "dependencies": {
+    "@fontsource/outfit": "^5.2.0",
+    "lucide-react": "^1.58.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^8.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "axe-core": "^4.14.0",
+    "puppeteer-core": "^25.14.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  },
+  "optionalDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.2.14"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

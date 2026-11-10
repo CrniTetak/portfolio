@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-pre/
+.env*
+*.local
+.netlify/
+e2e-slike/
+*.log
+.vite/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.wrangler/
+
+# lokalni alat za merenje (poredi sa internim demoom drugog projekta): ne ide u repozitorijum
+skripte/mjerenje-trake.mjs

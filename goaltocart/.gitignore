@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env*
+*.local
+e2e-slike/
+*.log
+.vite/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.vitest/

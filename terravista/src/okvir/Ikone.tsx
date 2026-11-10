@@ -1,0 +1,23 @@
+// Ikonice (Lucide, ISC licenca) — pojedinačni uvoz, debljina linije 2 (UI 5). Jedno mesto da se vidi koji se koriste.
+export {
+  Info,
+  Play,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  ChevronDown,
+  ArrowLeft,
+  House,
+  Tv,
+  Smartphone,
+  User,
+  CircleHelp,
+  RotateCcw,
+  X,
+  Menu,
+  Coffee,
+  Luggage,
+  Lock,
+  CreditCard,
+} from 'lucide-react'

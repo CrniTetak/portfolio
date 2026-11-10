@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TerraVista - PRIVREMENI simbol za demo. Kvadratna ikonica aplikacije (tamna podloga ugradjena). Bez fontova. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="t">
+  <title id="t">TerraVista (privremeni znak za demo)</title>
+  <!-- podloga: Noc -->
+  <rect width="512" height="512" rx="112" fill="#10243E"/>
+  <!-- T: gornja prečka (horizont) i stablo -->
+  <rect x="96" y="104" width="320" height="48" fill="#F4E9D8"/>
+  <rect x="236" y="152" width="40" height="222" fill="#F4E9D8"/>
+  <!-- V: pogled / dolina, nosi zemlju -->
+  <polyline points="112,200 256,376 400,200" fill="none" stroke="#2BB3A3" stroke-width="52" stroke-linejoin="miter"/>
+  <!-- Terra: disk zemlje na stablu T, u otvoru V -->
+  <circle cx="256" cy="252" r="46" fill="#E0693C"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="262 107 490 490" width="64" height="64" role="img" aria-labelledby="t">
+  <title id="t">AllAddIn1 - grb, varijanta za malu velicinu (favicon, 16-48 px)</title>
+  <!-- Pojednostavljeno: bez unutrasnjeg prstena, bez plamena i linije postolja, deblji prsten i krupniji segmenti -->
+  <defs>
+    <path id="seg" d="M462.1 140.7 A216 216 0 0 1 551.9 140.7 L538.2 205.3 A150 150 0 0 0 475.8 205.3 Z"/>
+  </defs>
+  <circle cx="507" cy="352" r="240" fill="#050A14"/>
+  <g fill="#7E1E16">
+    <use href="#seg"/>
+    <use href="#seg" transform="rotate(46 507 352)"/>
+    <use href="#seg" transform="rotate(-46 507 352)"/>
+    <use href="#seg" transform="rotate(114 507 352)"/>
+    <use href="#seg" transform="rotate(246 507 352)"/>
+    <use href="#seg" transform="rotate(158 507 352)"/>
+    <use href="#seg" transform="rotate(202 507 352)"/>
+  </g>
+  <circle cx="507" cy="352" r="228" fill="none" stroke="#D8A52A" stroke-width="24"/>
+  <g fill="#D8A52A">
+    <path d="M440 322 C445 306 462 301 478 301 C494 301 511 306 516 322 Z"/>
+    <rect x="428" y="317" width="98" height="20" rx="10"/>
+    <path d="M400 352 C405 338 440 333 480 333 L640 331 C672 330 698 335 714 342 C690 346 664 354 640 368 C615 382 600 400 575 412 C550 426 520 434 497 436 L458 436 C435 420 415 390 400 352 Z"/>
+    <path d="M458 432 L498 432 C494 450 492 457 508 464 L534 470 L436 470 L456 460 C468 452 464 442 458 432 Z"/>
+    <rect x="428" y="466" width="108" height="14" rx="7"/>
+  </g>
+  <path d="M412 352 C385 338 350 308 322 320 C300 332 308 362 336 378 C360 390 378 392 372 410" fill="none" stroke="#D8A52A" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

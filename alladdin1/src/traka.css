@@ -1,0 +1,526 @@
+/* =====================================================================
+   TRAKA PRIČE, SPOJENA TRAKA I PANEL ODOZDO — MERE 1:1 kao u Nasetu (src/traka.css) i GoalToCart-u (index.css):
+   razmaci, visine, širine, zaobljenja, debljine linija, veličine slova i proreda, maksimalna visina panela (82%), pozicija, senka.
+   Razlikuju se SAMO boje (AllAddIn1 tokeni: zlato na noći) i porodica fonta (naš serif).
+   Jedina mera koja se razlikuje između GoalToCart-a i Nasetua je veličina ikonica (18/14 px u GoalToCart-u, 20/16 px u Nasetu);
+   ovde su 18/14 px (GoalToCart i UI.md 6). Merenje: skripte/merenje-panela.mjs; tabela u docs/KAKO-JE-NAPRAVLJENO.md.
+   ===================================================================== */
+:root {
+  --pr-s2: 8px;
+  --pr-s3: 12px;
+  --pr-s4: 16px;
+  --pr-r: 6px;
+  --pr-dark: var(--color-story-bar);
+  --pr-on: var(--color-ink);
+  --pr-on2: var(--color-ink-2);
+  --pr-accent: var(--color-gold-500); /* linija na vrhu trake */
+  --pr-accent-light: var(--color-gold-400); /* završeni koraci, fokus na tamnom */
+  --pr-accent-ink: var(--color-on-gold);
+  --pr-btn-ink: var(--color-on-gold);
+  --pr-btn-bg: var(--color-gold-500);
+  --pr-btn-bg-hover: var(--color-gold-300);
+  --pr-line: rgba(235, 213, 142, 0.55); /* ivice na tamnom (zlato umesto bele) */
+  --pr-fork: var(--color-warn);
+}
+.pr-fixed {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 50;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.pr-bar,
+.pr-dock,
+.pr-sheet {
+  line-height: 1.5;
+  font-size: 14px;
+  font-family: var(--font-body);
+}
+.pr-bar button,
+.pr-dock button,
+.pr-sheet button {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* dugmad */
+.pr-btn {
+  font: 600 14px/1 var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pr-s2);
+  min-height: 40px;
+  padding: 0 var(--pr-s4);
+  border-radius: var(--pr-r);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.pr-bar .pr-btn {
+  min-height: 32px;
+  font-size: 13px;
+}
+.pr-btn-light {
+  background: var(--pr-btn-bg);
+  color: var(--pr-btn-ink);
+}
+.pr-btn-light:hover {
+  background: var(--pr-btn-bg-hover);
+}
+.pr-btn-line {
+  background: transparent;
+  color: var(--pr-on);
+  border-color: var(--pr-line);
+}
+.pr-btn-line:hover {
+  background: rgba(235, 213, 142, 0.12);
+}
+.pr-btn[disabled] {
+  background: rgba(244, 239, 227, 0.12);
+  color: var(--color-ink-3);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+.pr-btn-block {
+  width: 100%;
+}
+.pr-btn svg,
+.pr-nav svg,
+.pr-closeb svg {
+  flex: none;
+}
+
+/* prekidač */
+.pr-seg {
+  display: inline-flex;
+  border: 1px solid rgba(244, 239, 227, 0.55);
+  border-radius: var(--pr-r);
+  overflow: hidden;
+}
+.pr-seg button {
+  font: 500 12.5px var(--font-body);
+  color: var(--pr-on2);
+  background: transparent;
+  border: 0;
+  padding: 6px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 30px;
+}
+.pr-seg button + button {
+  border-left: 1px solid rgba(244, 239, 227, 0.4);
+}
+.pr-seg button:hover {
+  background: rgba(244, 239, 227, 0.1);
+  color: var(--pr-on);
+}
+.pr-seg button[aria-pressed='true'] {
+  background: var(--pr-btn-bg);
+  color: var(--pr-btn-ink);
+  font-weight: 700;
+}
+
+/* traka (računar i tablet) */
+.pr-bar {
+  background: var(--pr-dark);
+  color: var(--pr-on);
+  border-top: 3px solid var(--pr-accent);
+  font-size: 13px;
+}
+.pr-story {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--pr-s4);
+  align-items: center;
+  padding: 10px var(--pr-s4);
+  border-bottom: 1px solid rgba(244, 239, 227, 0.14);
+}
+.pr-bar-h {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.pr-story p {
+  color: var(--pr-on2);
+  font-size: 13px;
+  margin: 0;
+}
+.pr-acts {
+  display: flex;
+  gap: var(--pr-s2);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.pr-ctl {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-s4);
+  padding: 8px var(--pr-s4);
+  flex-wrap: wrap;
+}
+.pr-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pr-nav {
+  background: transparent;
+  border: 1px solid rgba(235, 213, 142, 0.55);
+  color: var(--pr-on);
+  border-radius: var(--pr-r);
+  height: 30px;
+  padding: 0 8px;
+  cursor: pointer;
+  font: 500 12.5px var(--font-body);
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.pr-nav:hover {
+  background: rgba(235, 213, 142, 0.12);
+}
+.pr-nav[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.pr-d {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(244, 239, 227, 0.45);
+  background: transparent;
+  color: var(--pr-on2);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.pr-d:hover {
+  border-color: var(--pr-on);
+  color: var(--pr-on);
+}
+.pr-d.done {
+  background: var(--pr-accent-light);
+  border-color: var(--pr-accent-light);
+  color: var(--pr-accent-ink);
+}
+.pr-d.now {
+  background: var(--pr-btn-bg);
+  border-color: var(--pr-btn-bg);
+  color: var(--pr-btn-ink);
+  box-shadow: 0 0 0 3px rgba(227, 194, 106, 0.55);
+}
+.pr-d.fork::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--pr-fork);
+  border: 2px solid var(--pr-dark);
+}
+.pr-grp {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-s2);
+}
+.pr-grp > span {
+  color: var(--pr-on2);
+  font-size: 12px;
+}
+.pr-push {
+  margin-left: auto;
+  display: flex;
+  gap: var(--pr-s3);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pr-lost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-warn);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.pr-free {
+  display: flex;
+  align-items: center;
+  gap: var(--pr-s3);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+.pr-free b {
+  color: var(--pr-on);
+}
+.pr-bar :focus-visible,
+.pr-dock :focus-visible,
+.pr-sheet :focus-visible {
+  outline: 3px solid var(--pr-accent-light);
+  outline-offset: 2px;
+}
+.pr-demodate {
+  color: var(--pr-on2);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+.pr-demodate b {
+  color: var(--pr-on);
+  font-weight: 600;
+}
+
+/* telefon: spojena donja traka */
+.pr-dock {
+  background: var(--pr-dark);
+  color: var(--pr-on);
+  border-top: 3px solid var(--pr-accent);
+  display: flex;
+  align-items: center;
+  gap: var(--pr-s2);
+  padding: 8px var(--pr-s3);
+}
+.pr-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(235, 213, 142, 0.35);
+  border-radius: var(--pr-r);
+  flex: none;
+}
+.pr-pill button {
+  background: transparent;
+  border: 0;
+  color: var(--pr-on);
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0 4px;
+  font: 600 13px var(--font-body);
+  white-space: nowrap;
+}
+.pr-pill button.mid {
+  padding: 0 6px;
+  min-width: 68px;
+}
+.pr-pill button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.pr-slot {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+.pr-slot .pr-btn {
+  flex: 1;
+  min-height: 44px;
+  white-space: normal;
+  line-height: 1.2;
+  padding: 6px 10px;
+}
+
+/* panel odozdo */
+.pr-overlay {
+  font-size: 14px;
+  line-height: 1.5;
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+}
+.pr-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 9, 15, 0.62);
+  border: 0;
+}
+.pr-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--pr-dark);
+  color: var(--pr-on);
+  border-radius: 18px 18px 0 0;
+  padding: var(--pr-s2) var(--pr-s4) var(--pr-s4);
+  border-top: 3px solid var(--pr-accent);
+  max-height: 82%;
+  overflow: auto;
+}
+.pr-grab {
+  width: 44px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(244, 239, 227, 0.4);
+  margin: 4px auto 8px;
+}
+.pr-closeb {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: 1px solid rgba(235, 213, 142, 0.35);
+  color: var(--pr-on);
+  border-radius: var(--pr-r);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.pr-sheet .pr-bar-h {
+  font-weight: 600;
+  font-size: 15px;
+  padding-right: 44px;
+  white-space: normal;
+}
+.pr-tag {
+  color: var(--pr-on2);
+  font-size: 12px;
+}
+.pr-sheet p {
+  color: var(--pr-on2);
+  margin: var(--pr-s2) 0 var(--pr-s3);
+}
+.pr-sheet ol {
+  list-style: none;
+  margin: 0 0 var(--pr-s3);
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.pr-sheet ol button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  display: flex;
+  gap: var(--pr-s3);
+  align-items: center;
+  padding: 6px var(--pr-s2);
+  border-radius: var(--pr-r);
+  color: var(--pr-on2);
+  min-height: 44px;
+  cursor: pointer;
+  font: 400 14px var(--font-body);
+}
+.pr-sheet ol button .n {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(244, 239, 227, 0.45);
+  display: grid;
+  place-items: center;
+  font: 600 12px var(--font-body);
+  flex: none;
+}
+.pr-sheet ol button.done .n {
+  background: var(--pr-accent-light);
+  border-color: var(--pr-accent-light);
+  color: var(--pr-accent-ink);
+}
+.pr-sheet ol button.now {
+  background: rgba(244, 239, 227, 0.12);
+  color: var(--pr-on);
+  font-weight: 600;
+}
+.pr-sheet ol button.now .n {
+  background: var(--pr-btn-bg);
+  border-color: var(--pr-btn-bg);
+  color: var(--pr-btn-ink);
+}
+.pr-row {
+  display: flex;
+  gap: var(--pr-s2);
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: var(--pr-s2);
+}
+.pr-sheet .pr-seg {
+  flex-wrap: wrap;
+}
+.pr-sheet .pr-btn {
+  min-height: 44px;
+}
+.pr-lbl {
+  font-size: 12px;
+  color: var(--pr-on2);
+  margin: var(--pr-s3) 0 4px;
+}
+
+/* tablet: opis priče se skriva (kao u GoalToCart-u i Nasetu) */
+@media (max-width: 1023px) {
+  .pr-story {
+    grid-template-columns: 1fr auto;
+  }
+  .pr-story p {
+    display: none;
+  }
+  .pr-ctl {
+    gap: var(--pr-s3);
+  }
+}
+/* telefon (uži od 720 ili niži od 500): mete za dodir 44 px */
+@media (max-width: 719px), (max-height: 499px) {
+  .pr-btn {
+    min-height: 44px;
+  }
+  .pr-seg button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .pr-closeb {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Traka priče, red 1: prekidač ishoda (korak 7) ne nosi vidljiv natpis, da opis koraka ostane u normalnim redovima (aria-label ostaje). */
+.pr-story .pr-grp > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- Fiksna visina trake: traka je ISTA visine u svim ulogama, koracima, ishodima i na/van ekrana priče ----
+   Jedina dozvoljena razlika u odnosu na GoalToCart: opis koraka ima fiksnu visinu (2 reda; 3 reda od 1024 do 1279 px), tekstovi su skraćeni da stanu. */
+.pr-story p {
+  height: 39px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .pr-story p {
+    height: 58.5px;
+  }
+}
+.pr-acts {
+  flex-wrap: nowrap;
+}
+.pr-glavno {
+  min-width: 140px;
+}
+.pr-rezervisano {
+  visibility: hidden;
+}
+.pr-push .pr-demodate {
+  display: inline-block;
+  min-width: 11.5em;
+  text-align: right;
+}
+@media (max-width: 1023px) {
+  .pr-story p {
+    display: none;
+  }
+}

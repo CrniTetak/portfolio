@@ -1,0 +1,107 @@
+/* Tema prototipa — vrednosti iz dizajn/UI-v2.md (Dorada 4: topao, potrošački, prozračan; terakota akcenat, Plus Jakarta Sans).
+   Menjaš li boju, menjaš je OVDE, jednom; koristi se svuda (npr. klasa bg-akcent). */
+@import "tailwindcss";
+@import "./traka.css";
+
+@theme {
+  /* Traka priče i panel (traka.css) traže --font-sans: od dorade 4b to je isti font kao ostatak platforme (Inter je uklonjen) */
+  --font-sans: "Plus Jakarta Sans Variable", "Segoe UI", Roboto, Arial, sans-serif;
+  --font-nasetu: "Plus Jakarta Sans Variable", "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Osnovne boje */
+  --color-mastilo: #201c1a;
+  --color-sek: #5c5551;
+  --color-prig: #6b635e;
+  --color-poz: #ffffff;
+  --color-traka: #f7f5f3;
+  --color-linija: #ebebeb;
+  --color-linija-j: #8a827d;
+
+  /* Terakota: jedan topli akcenat (dugme, aktivno, fokus). Nikad bliska ružičasto-crvenoj (vidi UI-v2.md, odeljak 1). */
+  --color-akcent: #c8401e;
+  --color-akcent-t: #a93316;
+  --color-akcent-s: #fdf0ea;
+  --color-akcent-dekor: #e8603c; /* SAMO ukras, nikad tekst */
+  /* Stari nazivi: traka.css (.pr-bottomnav) ih još koristi i ne sme se menjati, pa su alias na akcenat */
+  --color-petrol: var(--color-akcent);
+  --color-petrol-s: var(--color-akcent-s);
+
+  /* Oznaka PROTOTIP i opšte žute napomene (namerno različite od akcenta da ne liče na dugme) */
+  --color-prototip-s: #fef3c7;
+  --color-prototip-tekst: #78350f;
+  --color-prototip-ivica: #b45309; /* i poslednjih 25% odbrojavanja */
+
+  /* Boje uloga */
+  --color-uloga-produkcija: #c8401e;
+  --color-uloga-vlasnik: #2f6b4f;
+  --color-uloga-partner: #4338ca;
+  --color-uloga-admin: #3f3a36;
+
+  --color-zlato: #f59e0b; /* fokus na tamnoj pozadini */
+  --color-opasno: #9b1c1c;
+  --color-uspeh: #15803d;
+
+  --radius-dugme: 12px;
+  --radius-kartica: 16px;
+  --radius-papir: 8px;
+
+  /* Mekane, toplo-sive senke */
+  --shadow-hover: 0 6px 16px rgba(32, 28, 26, 0.12);
+  --shadow-pilula: 0 2px 12px rgba(32, 28, 26, 0.1);
+  --shadow-plutajuce: 0 8px 28px rgba(32, 28, 26, 0.16);
+}
+
+:root {
+  /* Uzrok razmaka u „Beogradu ." i „(brief )" (dorada 4b, izmereno): Plus Jakarta Sans u težini 800 ima široku tačku i zagradu (advance ~0,41 em),
+     a kerning par „f)" čak DODAJE oko 0,07 em razmaka. Nije podela na latin/latin-ext fajlove (isto je i bez slova „ć"), ni letter-spacing.
+     Zato je kerning isključen u celoj aplikaciji (i u traci). */
+  font-kerning: none;
+  font-family: var(--font-nasetu);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: var(--color-poz);
+  color: var(--color-mastilo);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Naslovi: isti font, bez serifa (UI-v2.md, odeljak 3) */
+h1 { font-weight: 700; letter-spacing: -0.01em; word-spacing: 0.04em; }
+/* Hero naslov: bez negativnog razmaka slova (font ima uski razmak između reči, pa bi se reči lepile) i malo šire reči */
+h1.hero, .hero-naslov { font-weight: 800; letter-spacing: 0; word-spacing: 0.08em; }
+
+
+/* Iznosi: jednako široke cifre (Plus Jakarta Sans podržava tabelarne cifre, izmereno: 1111 = 0000) */
+.cifre { font-variant-numeric: tabular-nums; }
+
+/* Fokus tastaturom: akcent prsten sa belim razmakom (zlatni na tamnoj pozadini) */
+:focus-visible { outline: 2px solid var(--color-akcent); outline-offset: 2px; }
+.tamno :focus-visible { outline-color: var(--color-zlato); }
+
+/* Animacija otključavanja adrese (jedini "pokret" u prototipu) — gasi se kod smanjenog kretanja */
+@keyframes otkljucaj { 0% { transform: translateY(0); } 50% { transform: translateY(-4px) rotate(-8deg); } 100% { transform: translateY(0); } }
+@keyframes sjaj { 0% { box-shadow: 0 0 0 0 rgba(21,128,61,.7); } 100% { box-shadow: 0 0 0 12px rgba(21,128,61,0); } }
+.anim-otkljucaj { animation: otkljucaj 600ms ease-out; }
+.anim-sjaj { animation: sjaj 1s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+html { scroll-padding-top: 6rem; }
+/* Fokus pri tabovanju ne sme da završi ispod fiksne trake/doka/donje navigacije: --bar-h postavlja Okvir.tsx (visina donjeg bloka); vizuelno se ništa ne pomera */
+html { scroll-padding-bottom: calc(var(--bar-h, 0px) + 8px); }
+
+/* Telefon: tabele postaju kartice (svaki red jedna kartica sa parovima "naziv: vrednost") */
+@media (max-width: 639px) {
+  table.tabela-kartice, .tabela-kartice thead, .tabela-kartice tbody, .tabela-kartice tr, .tabela-kartice td { display: block; min-width: 0 !important; width: 100%; }
+  .tabela-kartice thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabela-kartice tr { background: #fff; border: 1px solid var(--color-linija); border-radius: 16px; margin-bottom: 12px; padding: 8px 12px; height: auto !important; }
+  .tabela-kartice td { display: flex; justify-content: space-between; gap: 12px; text-align: right !important; padding: 6px 0 !important; border: 0 !important; }
+  .tabela-kartice td::before { content: attr(data-label); font-weight: 600; color: var(--color-prig); text-align: left; flex-shrink: 0; }
+  .tabela-kartice td:empty { display: none; }
+}
+
+/* Fokus na naslov posle promene ekrana je samo za čitače ekrana; bez okvira oko naslova */
+h1[tabindex="-1"]:focus { outline: none; }
